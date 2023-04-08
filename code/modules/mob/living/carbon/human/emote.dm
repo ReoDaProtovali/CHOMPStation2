@@ -171,6 +171,11 @@ var/list/_human_default_emotes = list(
 	/decl/emote/audible/croon,
 	/decl/emote/audible/lwarble,
 	/decl/emote/audible/croak_skrell,
+<<<<<<< HEAD
+=======
+	/decl/emote/audible/roarbark
+
+>>>>>>> 125d3d5824... Merge pull request #14764 from Rykka-Stormheart/shep-dev-markings-port
 	//VOREStation Add End
 	//CHOMP Add start
 	/decl/emote/audible/prbt2,
