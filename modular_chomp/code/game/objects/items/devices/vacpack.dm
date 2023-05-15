@@ -4,6 +4,7 @@
 	desc = "Useful for slurping mess off the floors. Even things and stuff depending on settings. Can be connected to a trash bag or vore belly. On-mob sprites can be toggled via verb in Objects tab."
 	icon = 'modular_chomp/icons/mob/vacpack.dmi'
 	icon_override = 'modular_chomp/icons/mob/vacpack.dmi'
+	var/power_sprites = "sucker" //Set this to what the base name of the icons you're using will be ("sucker-1", "sucker_nobag")
 	icon_state = "sucker_drop"
 	item_state = "sucker"
 	var/vac_power = 0
@@ -62,7 +63,7 @@
 			return
 		else
 			vac_power = vac_settings[set_input]
-			icon_state = "sucker-[vac_power]"
+			icon_state = "[power_sprites]-[vac_power]"
 
 /obj/item/device/vac_attachment/afterattack(atom/target, mob/living/user, proximity)
 	if(vac_power < 1)
@@ -74,7 +75,7 @@
 	if(istype(output_dest,/obj/item/weapon/storage/bag/trash))
 		if(get_turf(output_dest) != get_turf(user))
 			vac_power = 0
-			icon_state = "sucker-0"
+			icon_state = "[power_sprites]-0"
 			output_dest = null
 			to_chat(user, "<span class='warning'>Trash bag not found. Shutting down.</span>")
 			return
@@ -95,7 +96,7 @@
 		var/obj/belly/B = output_dest
 		if(B.loc != user && !B.loc.Adjacent(user)) //Can still be used as a feeding tube by another adjacent player.
 			vac_power = 0
-			icon_state = "sucker-0"
+			icon_state = "[power_sprites]-0"
 			output_dest = null
 			to_chat(user, "<span class='warning'>Target destination not found. Shutting down.</span>")
 			return
@@ -248,11 +249,11 @@
 
 /obj/item/device/vac_attachment/pickup(mob/user)
 	.=..()
-	icon_state = "sucker-[vac_power]"
+	icon_state = "[power_sprites]-[vac_power]"
 
 /obj/item/device/vac_attachment/dropped(mob/user as mob)
 	.=..()
-	icon_state = "sucker_drop"
+	icon_state = "[power_sprites]_drop"
 
 /obj/item/device/vac_attachment/verb/hide_pack()
 	set name = "Toggle Vac-Pack Sprites"
@@ -260,9 +261,9 @@
 	set category = "Object"
 	var/choice = tgui_input_list(usr, "Vac-Pack Visibility Options", "Vac-Pack Visibility Options", list("Show Pack", "Show Tube", "Hidden"))
 	if(choice == "Show Pack")
-		item_state = "sucker"
+		item_state = "[power_sprites]"
 	if(choice == "Show Tube")
-		item_state = "sucker_nobag"
+		item_state = "[power_sprites]_nobag"
 	if(choice == "Hidden")
 		item_state = null
 	usr.update_inv_r_hand()
@@ -274,3 +275,10 @@
 		var/mob/living/L = thing
 		var/mob_holder_type = L.holder_type || /obj/item/weapon/holder
 		new mob_holder_type(src, L)
+
+/obj/item/device/vac_attachment/swoopie
+	name = "Vac-Beak"
+	desc = "Useful for swooping pests and trash off the floors. Even things and stuff depending on settings. Can be connected to a trash bag or vore belly. On-mob sprites can be toggled via verb in Objects tab."
+	power_sprites = "swoopie"
+	icon_state = "swoopie_drop"
+	item_state = "swoopie"
