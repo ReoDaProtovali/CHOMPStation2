@@ -277,7 +277,7 @@
 		new mob_holder_type(src, L)
 
 /obj/item/device/vac_attachment/swoopie
-	name = "Vac-Beak"
+	name = "Vac-Beak intake"
 	desc = "Useful for swooping pests and trash off the floors. Even things and stuff depending on settings. Can be connected to a trash bag or vore belly. On-mob sprites can be toggled via verb in Objects tab."
 	power_sprites = "swoopie"
 	icon_state = "swoopie_drop"

@@ -107,6 +107,7 @@
 	desc = "With a mighty WHUMP, the suction of the big bird's ravenous vacuum system has sucked you up out of the embrace of its voracious main beak and into a tight bulge squeezing along the long ribbed rubbery tube leading towards the roaring doom of the synthetic bird's efficient waste disposal system."
 	digest_mode = DM_HOLD
 	item_digest_mode = IM_HOLD
+	mode_flags = list(DM_FLAG_TURBOMODE) // Replacing speedy_mob_processing
 	autotransfer_enabled = TRUE
 	autotransferchance = 100
 	autotransferwait = 70
@@ -120,7 +121,7 @@
 	count_items_for_sprite = TRUE
 	item_multiplier = 10
 	health_impacts_size = FALSE
-	speedy_mob_processing = TRUE
+	//speedy_mob_processing = TRUE // Replaced by turbo mode
 
 /mob/living/simple_mob/vore/aggressive/corrupthound/swoopie/Life()
 	. =..()
