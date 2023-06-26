@@ -122,6 +122,12 @@
 			add_overlay("[module_sprites[icontype]]-sleeper_g")
 		if(sleeper_r == TRUE || (!sleeper_g && vore_fullness_ex["stomach"])) //CHOMPEdit - Also allow normal vore bellies to affect this sprite
 			add_overlay("[module_sprites[icontype]]-sleeper_r[fullness_extension]") //CHOMPEdit - Allow multiple belly sizes...
+		//CHOMPEdit begin - Borg support for multiple bellies
+		for(var/belly_class in vore_fullness_ex)
+			var/vs_fullness = vore_fullness_ex[belly_class]
+			if(vs_fullness > 0 && !(belly_class == "stomach")) //Skip the "stomach" bellyclass, as it fills the sleeper sprite instead.
+				add_overlay("[module_sprites[icontype]]-[belly_class]_[vs_fullness]")
+		//CHOMPEdit end
 		if(istype(module_active,/obj/item/weapon/gun/energy/laser/mounted))
 			add_overlay("laser")
 		if(istype(module_active,/obj/item/weapon/gun/energy/taser/mounted/cyborg))
@@ -174,6 +180,8 @@
 			icon = 'icons/mob/raptorborg/raptor.dmi'
 		else if(icontype == "Raptor V-4.1") //CHOMPADDITION: letting us redurect to our raptor dmi
 			icon = 'modular_chomp/icons/mob/raptor_ch.dmi' //CHOMPADDITION: letting us redurect to our raptor dmi
+		else if(icontype == "Swoopie") //Chompedit... No idea how this works time to figure it out
+			icon = 'modular_chomp/icons/mob/swoopie/swoopie.dmi'
 		else
 			icon = wideborg_dept
 		return

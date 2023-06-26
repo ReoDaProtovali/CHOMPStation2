@@ -2,6 +2,9 @@
 /mob/living/silicon/robot/swoopie
 	icon = 'modular_chomp/icons/mob/swoopie/swoopie.dmi'
 	icon_state = "swoopie"
+	vore_capacity_ex = list("stomach" = 1, "neck1" = 1, "neck2" = 1, "neck3" = 1, "neck4" = 1)
+	vore_fullness_ex = list("stomach" = 0, "neck1" = 0, "neck2" = 0, "neck3" = 0, "neck4" = 0)
+	vore_icon_bellies = list("stomach", "neck1", "neck2", "neck3", "neck4")
 	vis_height = 64
 	modtype = "swoopie"
 	lawupdate = 0
@@ -40,6 +43,26 @@
 	src.modules += new /obj/item/weapon/storage/bag/trash(src)
 	src.modules += new /obj/item/device/lightreplacer(src)
 
+	//Starts empty. Can only recharge with recycled material.
+	var/datum/matter_synth/metal = new /datum/matter_synth/metal()
+	metal.name = "Steel reserves"
+	metal.recharge_rate = 0
+	metal.max_energy = 50000
+	metal.energy = 0
+	var/datum/matter_synth/glass = new /datum/matter_synth/glass()
+	glass.name = "Glass reserves"
+	glass.recharge_rate = 0
+	glass.max_energy = 50000
+	glass.energy = 0
+	var/datum/matter_synth/water = new /datum/matter_synth(500)
+	water.name = "Water reserves"
+	water.recharge_rate = 0
+	R.water_res = water
+
+	synths += metal
+	synths += glass
+	synths += water
+
 	R.icon = 'modular_chomp/icons/mob/swoopie/swoopie.dmi'
 	R.wideborg_dept = 'modular_chomp/icons/mob/swoopie/swoopie.dmi'
 	R.hands.icon = 'icons/mob/screen1_robot_vr.dmi'
@@ -65,7 +88,7 @@
 /mob/living/silicon/robot/swoopie/speech_bubble_appearance()
 	return "synthetic_evil"
 
-/mob/living/silicon/robot/swoopie/init_vore()
+/mob/living/silicon/robot/swoopie/init_vore() //Copied and edited from simplemob swoopies to fit intentions of the silicon swoopie
 	/* Copied from simplemob swoopies. Apparently doesnt exist in not simplemobs
 	if(!voremob_loaded)
 		return
@@ -88,6 +111,8 @@
 	B.belly_fullscreen_color = "#555B34"
 	B.sound_volume = 25
 	B.count_items_for_sprite = TRUE
+
+	// NOTE: /obj/belly/longneck is defined in mob/living/simple_mob/subtypes/vore/swoopie.dm
 
 	B = new /obj/belly/longneck/(src)
 	B.affects_vore_sprites = TRUE
@@ -138,26 +163,12 @@
 
 	vore_selected = B
 
-/obj/belly/longneck
-	affects_vore_sprites = TRUE
-	belly_sprite_to_affect = "neck1"
-	name = "vacuum hose"
-	desc = "With a mighty WHUMP, the suction of the big bird's ravenous vacuum system has sucked you up out of the embrace of its voracious main beak and into a tight bulge squeezing along the long ribbed rubbery tube leading towards the roaring doom of the synthetic bird's efficient waste disposal system."
-	digest_mode = DM_HOLD
-	item_digest_mode = IM_HOLD
-	autotransfer_enabled = TRUE
-	mode_flags = DM_FLAG_TURBOMODE // Replacing speedy_mob_processing
-	autotransferchance = 100
-	autotransferwait = 70
-	autotransferlocation = "Churno-Vac"
-	vore_verb = "suck"
-	belly_fullscreen_color = "#4d4d4d"
-	belly_fullscreen = "a_tumby"
-	contaminates = FALSE
-	human_prey_swallow_time = 1
-	nonhuman_prey_swallow_time = 1
-	autotransfer_max_amount = 2
-	count_items_for_sprite = TRUE
-	item_multiplier = 10
-	health_impacts_size = FALSE
-	//speedy_mob_processing = TRUE // Replaced by turbo mode
+//Special swoopie devices go here.
+/obj/item/device/vac_attachment/swoopie //Special vac for Swoopies!
+	name = "Vac-Beak intake"
+	desc = "Useful for swooping pests and trash off the floors. Even things and stuff depending on settings. Can be connected to a trash bag or vore belly. On-mob sprites can be toggled via verb in Objects tab."
+	power_sprites = "swoopie"
+	icon_state = "swoopie_drop"
+	item_state = "swoopie"
+
+/obj/item/weapon/dogborg/jaws/swoopie
