@@ -1638,18 +1638,18 @@
 /datum/reagent/drink/decaf
 	name = "Decaf Coffee"
 	id = "decaf"
-	description = "Coffee with all the wake-up sucked out."
-	taste_description = "bad coffee"
+	description = "Coffee with at least 97% of its caffeine content removed. All of the flavor, none of the kick!" // CHOMPEdit - In defense of decaf coffee
+	taste_description = "coffee" // CHOMPEdit - In defense of decaf coffee
 	taste_mult = 1.3
 	color = "#482000"
 	adj_temp = 25
 
 	cup_icon_state = "cup_coffee"
 	cup_name = "cup of decaf"
-	cup_desc = "Basically just brown, bitter water."
+	cup_desc = "Just as bitter as regular coffee, but it won't keep you up at night!" // CHOMPEdit - In defense of decaf coffee
 
 	glass_name = "decaf coffee"
-	glass_desc = "Basically just brown, bitter water."
+	glass_desc = "Just as bitter as regular coffee, but it won't keep you up at night!" // CHOMPEdit - In defense of decaf coffee
 	allergen_type = ALLERGEN_COFFEE //Decaf coffee is still coffee, just less stimulating.
 
 /datum/reagent/drink/hot_coco
@@ -2586,7 +2586,7 @@
 /datum/reagent/ethanol/ale
 	name = "Ale"
 	id = "ale"
-	description = "A dark alchoholic beverage made by malted barley and yeast."
+	description = "A dark alcoholic beverage made by malted barley and yeast."
 	taste_description = "hearty barley ale"
 	color = "#4C3100"
 	strength = 50
@@ -3763,7 +3763,7 @@
 /datum/reagent/ethanol/vodkatonic
 	name = "Vodka and Tonic"
 	id = "vodkatonic"
-	description = "For when a gin and tonic isn't russian enough."
+	description = "For when a gin and tonic isn't Russian enough."
 	taste_description = "tart bitterness"
 	color = "#0064C8" // rgb: 0, 100, 200
 	strength = 15
@@ -4403,7 +4403,7 @@
 /datum/reagent/ethanol/holywine
 	name = "Angel Ichor"
 	id = "holywine"
-	description = "A premium alchoholic beverage made from distilled angel blood."
+	description = "A premium alcoholic beverage made from distilled angel blood."
 	taste_description = "wings in a glass, and a hint of grape"
 	color = "#C4921E"
 	strength = 20

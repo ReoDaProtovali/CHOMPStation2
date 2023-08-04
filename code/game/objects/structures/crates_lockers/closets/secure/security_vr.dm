@@ -24,8 +24,10 @@
 		/obj/item/clothing/under/rank/neo_hos_blackblue_skirt,
 		/obj/item/clothing/under/rank/neo_hos_parade_blue,
 		/obj/item/clothing/under/rank/neo_hos_parade_blue_fem,
+		/obj/item/clothing/under/rank/neo_hos_gorka,
 		/obj/item/clothing/suit/storage/toggle/labcoat/neo_hos_parade,
 		/obj/item/clothing/suit/storage/toggle/labcoat/neo_hosformal_blue,
+		/obj/item/clothing/suit/storage/vest/wardencoat/neo_armsco_trench,
 		/obj/item/clothing/head/helmet/HoS/hat/blue,
 		/obj/item/clothing/head/helmet/dermal,
 		/obj/item/device/radio/headset/heads/hos,
@@ -38,7 +40,8 @@
 		/obj/item/clothing/suit/storage/hooded/wintercoat/security/hos,
 		/obj/item/clothing/shoes/boots/winter/security,
 //CHOMP Add ^
-		/obj/item/clothing/mask/gas/half)
+		/obj/item/clothing/mask/gas/half, // CHOMPADD
+		/obj/item/clothing/mask/gas/sechailer/swat/hos) // CHOMPADD
 
 /obj/structure/closet/secure_closet/hos2
 	name = "head of security's gear"
@@ -59,6 +62,8 @@
 		/obj/item/weapon/melee/baton/loaded,
 //		/obj/item/weapon/storage/secure/briefcase/nsfw_pack_hos,
 //YW Removal,
+		/obj/item/weapon/gun/projectile/caseless/prototype/loaded, // CHOMPADD
+		/obj/item/ammo_magazine/m5mmcaseless, // CHOMPADD
 		/obj/item/weapon/gun/energy/x01,
 		/obj/item/weapon/cell/device/weapon,
 		/obj/item/weapon/melee/telebaton,
@@ -66,6 +71,7 @@
 //		/obj/item/clothing/suit/storage/hooded/wintercoat/security, //CHOMP Remove
 //		/obj/item/clothing/shoes/boots/winter/security, //CHOMP Remove
 		/obj/item/device/ticket_printer, //CHOMP Add
+		/obj/item/weapon/gun/energy/taser, // CHOMPADD
 		/obj/item/device/flashlight/maglight)
 
 //Custom NT Security Lockers, Only found at central command

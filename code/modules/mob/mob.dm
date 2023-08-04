@@ -433,11 +433,18 @@
 /client/verb/changes()
 	set name = "Changelog"
 	set category = "OOC"
-	src << browse('html/changelog.html', "window=changes;size=675x650")
+	// CHOMPedit Start - Better Changelog
+	//src << browse('html/changelog.html', "window=changes;size=675x650")
+	//return
+
+	if(!GLOB.changelog_tgui)
+		GLOB.changelog_tgui = new /datum/changelog()
+	GLOB.changelog_tgui.tgui_interact(usr)
+	// CHOMPedit END
 	if(prefs.lastchangelog != changelog_hash)
 		prefs.lastchangelog = changelog_hash
 		SScharacter_setup.queue_preferences_save(prefs)
-		winset(src, "rpane.changelog", "background-color=none;font-style=;")
+		// winset(src, "rpane.changelog", "background-color=none;font-style=;") //ChompREMOVE
 
 /mob/verb/observe()
 	set name = "Observe"
@@ -685,8 +692,9 @@
 					for(var/datum/controller/subsystem/SS in Master.subsystems)
 						SS.stat_entry()
 
-			if(statpanel("Tickets"))
-				GLOB.ahelp_tickets.stat_entry()
+			// CHOMPedit - Ticket System
+			//if(statpanel("Tickets"))
+				//GLOB.ahelp_tickets.stat_entry()
 
 
 			if(length(GLOB.sdql2_queries))
@@ -696,9 +704,9 @@
 						Q.generate_stat()
 
 
-		if(has_mentor_powers(client))
+		if(has_mentor_powers(client) || client.holder) // CHOMPedit - Ticket System
 			if(statpanel("Tickets"))
-				GLOB.mhelp_tickets.stat_entry()
+				GLOB.tickets.stat_entry() // CHOMPedit - Ticket System
 
 		if(listed_turf && client)
 			if(!TurfAdjacent(listed_turf))

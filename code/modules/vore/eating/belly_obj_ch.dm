@@ -14,12 +14,22 @@
 
 	var/show_liquids = FALSE //Moved from vorepanel_ch to be a belly var
 	var/show_fullness_messages = FALSE //Moved from vorepanel_ch to be a belly var
+	var/liquid_overlay = TRUE						//Belly-specific liquid overlay toggle
+	var/max_liquid_level = 100						//Custom max level for liquid overlay
+	var/mush_overlay = FALSE						//Toggle for nutrition mush overlay
+	var/mush_color = "#664330"						//Nutrition mush overlay color
+	var/mush_alpha = 255							//Mush overlay transparency.
+	var/max_mush = 500								//How much nutrition for full mush overlay
+	var/min_mush = 0								//Manual setting for lowest mush level
+	var/item_mush_val = 0							//How much solid belly contents raise mush level per item
 
 	var/nutri_reagent_gen = FALSE					//if belly produces reagent over time using nutrition, needs to be optimized to use subsystem - Jack
 	var/list/generated_reagents = list("water" = 1) //Any number of reagents, the associated value is how many units are generated per process()
 	var/reagent_name = "water" 						//What is shown when reagents are removed, doesn't need to be an actual reagent
 	var/reagentid = "water"							//Selected reagent's id, for use in puddle system currently
 	var/reagentcolor = "#0064C877"					//Selected reagent's color, for use in puddle system currently
+	var/custom_reagentcolor							//Custom reagent color. Blank for normal reagent color
+	var/custom_reagentalpha							//Custom reagent alpha. Blank for capacity based alpha
 	var/gen_cost = 1 								//amount of nutrient taken from the host everytime nutrition is used to make reagents
 	var/gen_amount = 1							//Does not actually influence amount produced, but is used as a way to tell the system how much total reagent it has to take into account when filling a belly
 
@@ -169,15 +179,20 @@
 				gen_interval = 0
 			else
 				gen_interval++
-	if(reagents.total_volume)
-		for(var/mob/living/L in contents)
-			if(L.digestable && digest_mode == DM_DIGEST)
+	if(reagents.total_volume >= 5 && LAZYLEN(contents))
+		SEND_SIGNAL(src, COMSIG_BELLY_UPDATE_VORE_FX, FALSE, reagents.total_volume) // Signals vore_fx() reagents updates.
+		var/affecting_amt = reagents.total_volume / max(LAZYLEN(contents), 1)
+		if(affecting_amt > 5)
+			affecting_amt = 5
+		if(affecting_amt >= 1)
+			for(var/mob/living/L in contents)
+				if(L.digestable && digest_mode == DM_DIGEST)
+					if(reagents.total_volume)
+						reagents.trans_to(L, affecting_amt, 1, FALSE)
+				vore_fx(L, FALSE, reagents.total_volume)
+			for(var/obj/item/I in contents)
 				if(reagents.total_volume)
-					reagents.trans_to(L, reagents.total_volume, 0.1 / (LAZYLEN(contents) ? LAZYLEN(contents) : 1), FALSE)
-			vore_fx(L, FALSE, reagents.total_volume)
-		for(var/obj/item/I in contents)
-			if(reagents.total_volume)
-				reagents.trans_to(I, reagents.total_volume, 0.1 / (LAZYLEN(contents) ? LAZYLEN(contents) : 1), FALSE)
+					reagents.trans_to(I, affecting_amt, 1, FALSE)
 
 /obj/belly/proc/GenerateBellyReagents()
 	if(isrobot(owner))
@@ -198,7 +213,7 @@
 			reagents.add_reagent(reagent, generated_reagents[reagent] * digest_nutri_gain / gen_cost)
 	else
 		owner.adjust_nutrition((4.5 * digest_nutri_gain) * owner.get_digestion_efficiency_modifier())
-		digest_nutri_gain = 0
+	digest_nutri_gain = 0
 
 /obj/belly/proc/GenerateBellyReagents_digested()
 	if(reagents.total_volume <= custom_max_volume - 25 * gen_amount)
@@ -207,6 +222,7 @@
 	else
 		for(var/reagent in generated_reagents)
 			reagents.add_reagent(reagent, generated_reagents[reagent] / gen_amount * (custom_max_volume - reagents.total_volume))
+	digest_nutri_gain = 0
 
 //////////////////////////// REAGENT_ABSORB ////////////////////////
 
@@ -469,6 +485,8 @@
 /////////////////////////// CHOMP PCL END ///////////////////////////
 
 /obj/belly/proc/update_internal_overlay()
+	if(LAZYLEN(contents))
+		SEND_SIGNAL(src, COMSIG_BELLY_UPDATE_VORE_FX, TRUE) // Signals vore_fx() to listening atoms. Atoms must handle appropriate isliving() checks.
 	for(var/A in contents)
 		if(isliving(A))
 			vore_fx(A,1)
