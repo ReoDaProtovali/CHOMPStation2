@@ -52,11 +52,11 @@
 	icon_state = "dragonfly"
 	color_blend_mode = ICON_MULTIPLY
 
-/datum/sprite_accessory/wing/citheroniamoth
+/* /datum/sprite_accessory/wing/citheroniamoth //Chomp REMOVE START
 	name = "citheronia wings"
 	desc = ""
 	icon_state = "citheronia_wings"
-	ckeys_allowed = list("kira72")
+	ckeys_allowed = list("kira72") */ //Chomp REMOVE END
 
 /datum/sprite_accessory/wing/feathered
 	name = "feathered wings, colorable"
@@ -320,9 +320,10 @@
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
-/datum/sprite_accessory/wing/kara //SatinIsle Fluff Item
+/*/datum/sprite_accessory/wing/kara //SatinIsle Fluff Item //Chomp REMOVE
 	name = "Pterokara wings"
 	desc = ""
 	icon = 'icons/mob/vore/wings_vr.dmi'
 	icon_state = "feathered_kara"
 	ckeys_allowed = list("satinisle")
+*/

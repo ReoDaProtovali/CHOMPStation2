@@ -92,7 +92,7 @@
 
 /obj/machinery/vending/fooditalian
 	name = "Italian Imports"
-	desc = "You wanted some italian food? Well here's some imported from the local pizza place!"
+	desc = "You wanted some Italian food? Well here's some imported from the local pizza place!"
 	icon_state = "hotfood"
 	products = list(/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/mushroompizza = 15,
 					/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/vegetablepizza = 15,
@@ -238,11 +238,6 @@
 	vend_delay = 10
 
 // Food Machines (for event/away maps)
-
-/obj/machinery/vending/fitness/New()
-	products += list(/obj/item/weapon/reagent_containers/food/snacks/liquidprotein = 8)
-	prices += list(/obj/item/weapon/reagent_containers/food/snacks/liquidprotein = 5)
-	..()
 
 /obj/machinery/vending/blood
 	name = "Blood-Onator"
@@ -531,7 +526,8 @@
 					/obj/item/clothing/accessory/chaps = 5,
 					/obj/item/clothing/accessory/chaps/black = 5,
 					/obj/item/weapon/storage/briefcase/clutch = 1,
-					/obj/item/clothing/accessory/collar = 5,
+					/obj/item/clothing/accessory/collar/silver = 5,
+					/obj/item/clothing/accessory/collar/gold = 5,
 					/obj/item/clothing/accessory/collar/bell = 5,
 					/obj/item/clothing/accessory/collar/spike = 5,
 					/obj/item/clothing/accessory/collar/pink = 5,
@@ -930,6 +926,7 @@
 					/obj/item/clothing/under/suit_jacket/checkered/skirt = 5,
 					/obj/item/clothing/under/suit_jacket/tan = 5,
 					/obj/item/clothing/under/suit_jacket/tan/skirt = 5,
+					/obj/item/clothing/under/rank/neo_civvie_gorka = 5,
 					/obj/item/clothing/suit/storage/toggle/labcoat/neo_leather = 5,
 					/obj/item/clothing/suit/neo_gorka = 5,
 					/obj/item/clothing/suit/storage/toggle/labcoat/neo_civ_dep = 5,
@@ -950,6 +947,9 @@
 					/obj/item/weapon/storage/box/fluff/swimsuit/security = 5,
 					/obj/item/weapon/storage/box/fluff/swimsuit/medical = 5,
 					/obj/item/weapon/storage/box/fluff/swimsuit/cowbikini = 5,
+					/obj/item/weapon/storage/box/fluff/swimsuit/highclass = 5,
+					/obj/item/weapon/storage/box/fluff/swimsuit/risque = 5,
+					/obj/item/weapon/storage/box/fluff/swimsuit/streamlined = 5,
 					/obj/item/clothing/under/utility = 5,
 					/obj/item/clothing/under/utility/grey = 5,
 					/obj/item/clothing/under/utility/blue = 5,
@@ -1125,6 +1125,9 @@
 					/obj/item/weapon/storage/box/fluff/swimsuit/security = 50,
 					/obj/item/weapon/storage/box/fluff/swimsuit/medical = 50,
 					/obj/item/weapon/storage/box/fluff/swimsuit/cowbikini = 50,
+					/obj/item/weapon/storage/box/fluff/swimsuit/highclass = 50,
+					/obj/item/weapon/storage/box/fluff/swimsuit/risque = 50,
+					/obj/item/weapon/storage/box/fluff/swimsuit/streamlined = 50,
 					/obj/item/clothing/under/utility = 50,
 					/obj/item/clothing/under/utility/grey = 50,
 					/obj/item/clothing/under/utility/blue = 50,
@@ -1259,6 +1262,7 @@
 					/obj/item/weapon/storage/pill_bottle/dice = 5,
 					/obj/item/weapon/storage/pill_bottle/dice_nerd = 5,
 					/obj/item/weapon/melee/umbrella/random = 10,
+					/obj/item/weapon/picnic_blankets_carried = 10,
 					/obj/item/weapon/deck/schnapsen = 5,
 					/obj/item/weapon/deck/egy = 5)
 	prices = list(/obj/item/weapon/cane = 100,
@@ -1272,6 +1276,7 @@
 					/obj/item/weapon/storage/pill_bottle/dice = 100,
 					/obj/item/weapon/storage/pill_bottle/dice_nerd = 100,
 					/obj/item/weapon/melee/umbrella/random = 100,
+					/obj/item/weapon/picnic_blankets_carried = 100,
 					/obj/item/weapon/deck/schnapsen = 100,
 					/obj/item/weapon/deck/egy = 100)
 	premium = list(/obj/item/toy/bosunwhistle = 1)
@@ -2192,6 +2197,9 @@
 					/obj/item/weapon/storage/box/fluff/swimsuit/security = 5,
 					/obj/item/weapon/storage/box/fluff/swimsuit/medical = 5,
 					/obj/item/weapon/storage/box/fluff/swimsuit/cowbikini = 5,
+					/obj/item/weapon/storage/box/fluff/swimsuit/highclass = 5,
+					/obj/item/weapon/storage/box/fluff/swimsuit/risque = 5,
+					/obj/item/weapon/storage/box/fluff/swimsuit/streamlined = 5,
 					/obj/item/clothing/under/utility = 5,
 					/obj/item/clothing/under/utility/grey = 5,
 					/obj/item/clothing/under/utility/blue = 5,
@@ -3614,6 +3622,8 @@
 					/obj/item/weapon/reagent_containers/food/snacks/ratfruitcake = 15,
 					/obj/item/weapon/reagent_containers/food/snacks/ratpackburger = 8,
 					/obj/item/weapon/reagent_containers/food/snacks/ratpackcheese = 8,
+					/obj/item/weapon/reagent_containers/food/snacks/ratpackramen = 8,
+					/obj/item/weapon/reagent_containers/food/snacks/ratpacktaco = 8,
 					/obj/item/weapon/reagent_containers/food/snacks/ratpackturkey = 2)
 
 	prices = list(/obj/item/weapon/reagent_containers/food/snacks/ratprotein = 8,
@@ -3622,4 +3632,6 @@
 					/obj/item/weapon/reagent_containers/food/snacks/ratfruitcake = 8,
 					/obj/item/weapon/reagent_containers/food/snacks/ratpackburger = 10,
 					/obj/item/weapon/reagent_containers/food/snacks/ratpackcheese = 10,
+					/obj/item/weapon/reagent_containers/food/snacks/ratpackramen = 10,
+					/obj/item/weapon/reagent_containers/food/snacks/ratpacktaco = 10,
 					/obj/item/weapon/reagent_containers/food/snacks/ratpackturkey = 200)

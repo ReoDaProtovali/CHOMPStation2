@@ -36,6 +36,10 @@
 		"Parrot" = "pai-parrot",
 		"Rabbit" = "pai-rabbit",
 		//VOREStation Addition Start
+		"Dire wolf" = "pai-diredog",
+		"Horse (Lune)" = "pai-horse_lune",
+		"Horse (Soleil)" = "pai-horse_soleil",
+		"Dragon" = "pai-pdragon",
 		"Bear" = "pai-bear",
 		"Fennec" = "pai-fen",
 		"Type Zero" = "pai-typezero",
@@ -500,7 +504,7 @@
 				if("Cancel")
 					return
 		else if (istype(W, /obj/item/weapon/card/id) && idaccessible == 0)
-			to_chat(user, "<span class='notice'>[src] is not accepting access modifcations at this time.</span>")
+			to_chat(user, "<span class='notice'>[src] is not accepting access modifications at this time.</span>")		// CHOMPEDIT : purdev (spelling fix)
 			return
 
 /mob/living/silicon/pai/verb/allowmodification()
