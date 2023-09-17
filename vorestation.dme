@@ -4782,6 +4782,8 @@
 #include "modular_chomp\code\modules\reagents\reagents\food_drinks.dm"
 #include "modular_chomp\code\modules\reagents\reagents\medicine.dm"
 #include "modular_chomp\code\modules\reagents\reagents\toxin.dm"
+#include "modular_chomp\code\modules\recycling\disposal-construction.dm"
+#include "modular_chomp\code\modules\recycling\inserter.dm"
 #include "modular_chomp\code\modules\recycling\v_garbosystem.dm"
 #include "modular_chomp\code\modules\research\mechfab_designs.dm"
 #include "modular_chomp\code\modules\research\designs\implants.dm"
