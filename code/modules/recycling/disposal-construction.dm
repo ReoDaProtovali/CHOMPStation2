@@ -201,8 +201,6 @@
 			return /obj/structure/disposalpipe/tagger
 		if(DISPOSAL_PIPE_TAGGER_PARTIAL)
 			return /obj/structure/disposalpipe/tagger/partial
-		else
-			ch_dpipetype() //CHOMPAdd: Allows adding to this in modular_chomp rather than here
 	return
 
 

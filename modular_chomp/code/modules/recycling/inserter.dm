@@ -51,7 +51,7 @@
 /obj/structure/disposaloutlet/inserter/proc/eject(var/obj/structure/disposalholder/H)
 
 	//flick()
-	playsound("sound/items/poster_being_created.ogg")
+	playsound("sound/rakshasa/corrosion3.ogg")
 	if(!H)
 		return
 	H.vent_gas(src.loc)

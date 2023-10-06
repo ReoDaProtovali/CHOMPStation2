@@ -729,12 +729,12 @@
 		return
 
 	var/mob/living/U = user
-
+	/* CHOMPEdit Removing this to see if it's what breaks the CLONG
 	if (U.stat || U.last_special <= world.time)
 		return
 
 	U.last_special = world.time+100
-
+	*/
 	if (src.loc)
 		for (var/mob/M in hearers(src.loc.loc))
 			to_chat(M, "<FONT size=[max(0, 5 - get_dist(src, M))]>CLONG, clong!</FONT>")
