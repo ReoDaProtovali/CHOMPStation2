@@ -49,8 +49,9 @@ const digestModeToPreyMode = {
  *   show_liq, liq_interacts, liq_reagent_gen, liq_reagent_type, liq_reagent_name,
  *   liq_reagent_transfer_verb, liq_reagent_nutri_rate, liq_reagent_capacity, liq_sloshing, liq_reagent_addons,
  *   show_liq_fullness, liq_messages, liq_msg_toggle1, liq_msg_toggle2, liq_msg_toggle3, liq_msg_toggle4,
- *   liq_msg_toggle5, liq_msg1, liq_msg2, liq_msg3, liq_msg4, liq_msg5, sound_volume, egg_name, recycling,
- *   custom_reagentcolor, custom_reagentalpha, liquid_overlay, max_liquid_level, mush_overlay, mush_color, mush_alpha, max_mush, min_mush, item_mush_val
+ *   liq_msg_toggle5, liq_msg1, liq_msg2, liq_msg3, liq_msg4, liq_msg5, sound_volume, egg_name, recycling, entrance_logs, noise_freq,
+ *   custom_reagentcolor, custom_reagentalpha, liquid_overlay, max_liquid_level, mush_overlay, mush_color, mush_alpha, max_mush, min_mush, item_mush_val,
+ *   metabolism_overlay, metabolism_mush_ratio, max_ingested, custom_ingested_color, custom_ingested_alpha
  *
  * To the tabs section of VoreSelectedBelly return
  *       <Tabs.Tab selected={tabIndex === 5} onClick={() => setTabIndex(5)}>
@@ -688,6 +689,7 @@ const VoreSelectedBellyOptions = (props, context) => {
     egg_type,
     egg_name,
     recycling,
+    entrance_logs,
     selective_preference,
     save_digest_mode,
     eating_privacy_local,
@@ -892,6 +894,16 @@ const VoreSelectedBellyOptions = (props, context) => {
               content={recycling ? 'Enabled' : 'Disabled'}
             />
           </LabeledList.Item>
+          <LabeledList.Item label="Entrance Logs">
+            <Button
+              onClick={() =>
+                act('set_attribute', { attribute: 'b_entrance_logs' })
+              }
+              icon={entrance_logs ? 'toggle-on' : 'toggle-off'}
+              selected={entrance_logs}
+              content={entrance_logs ? 'Enabled' : 'Disabled'}
+            />
+          </LabeledList.Item>
           <LabeledList.Item label="Selective Mode Preference">
             <Button
               onClick={() =>
@@ -997,7 +1009,15 @@ const VoreSelectedBellySounds = (props, context) => {
   const { act } = useBackend(context);
 
   const { belly } = props;
-  const { is_wet, wet_loop, fancy, sound, release_sound, sound_volume } = belly;
+  const {
+    is_wet,
+    wet_loop,
+    fancy,
+    sound,
+    release_sound,
+    sound_volume,
+    noise_freq,
+  } = belly;
 
   return (
     <Flex wrap="wrap">
@@ -1057,6 +1077,14 @@ const VoreSelectedBellySounds = (props, context) => {
                 act('set_attribute', { attribute: 'b_sound_volume' })
               }
               content={sound_volume + '%'}
+            />
+          </LabeledList.Item>
+          <LabeledList.Item label="Noise Frequency">
+            <Button
+              onClick={() =>
+                act('set_attribute', { attribute: 'b_noise_freq' })
+              }
+              content={noise_freq}
             />
           </LabeledList.Item>
         </LabeledList>
@@ -1539,7 +1567,28 @@ const VoreSelectedBellyInteractions = (props, context) => {
                 }
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Auto-Transfer Chance">
+            <LabeledList.Item label="Auto-Transfer Min Amount">
+              <Button
+                content={autotransfer.autotransfer_min_amount}
+                onClick={() =>
+                  act('set_attribute', {
+                    attribute: 'b_autotransfer_min_amount',
+                  })
+                }
+              />
+            </LabeledList.Item>
+            <LabeledList.Item label="Auto-Transfer Max Amount">
+              <Button
+                content={autotransfer.autotransfer_max_amount}
+                onClick={() =>
+                  act('set_attribute', {
+                    attribute: 'b_autotransfer_max_amount',
+                  })
+                }
+              />
+            </LabeledList.Item>
+            <LabeledList.Divider />
+            <LabeledList.Item label="Auto-Transfer Primary Chance">
               <Button
                 content={autotransfer.autotransferchance + '%'}
                 onClick={() =>
@@ -1547,7 +1596,7 @@ const VoreSelectedBellyInteractions = (props, context) => {
                 }
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Auto-Transfer Location">
+            <LabeledList.Item label="Auto-Transfer Primary Location">
               <Button
                 content={
                   autotransfer.autotransferlocation
@@ -1559,6 +1608,35 @@ const VoreSelectedBellyInteractions = (props, context) => {
                 }
               />
             </LabeledList.Item>
+            <LabeledList.Item label="Auto-Transfer Primary Whitelist">
+              {(autotransfer.autotransfer_whitelist.length &&
+                autotransfer.autotransfer_whitelist.join(', ')) ||
+                'Everything'}
+              <Button
+                onClick={() =>
+                  act('set_attribute', {
+                    attribute: 'b_autotransfer_whitelist',
+                  })
+                }
+                ml={1}
+                icon="plus"
+              />
+            </LabeledList.Item>
+            <LabeledList.Item label="Auto-Transfer Primary Blacklist">
+              {(autotransfer.autotransfer_blacklist.length &&
+                autotransfer.autotransfer_blacklist.join(', ')) ||
+                'Nothing'}
+              <Button
+                onClick={() =>
+                  act('set_attribute', {
+                    attribute: 'b_autotransfer_blacklist',
+                  })
+                }
+                ml={1}
+                icon="plus"
+              />
+            </LabeledList.Item>
+            <LabeledList.Divider />
             <LabeledList.Item label="Auto-Transfer Secondary Chance">
               <Button
                 content={autotransfer.autotransferchance_secondary + '%'}
@@ -1583,24 +1661,32 @@ const VoreSelectedBellyInteractions = (props, context) => {
                 }
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Auto-Transfer Min Amount">
+            <LabeledList.Item label="Auto-Transfer Secondary Whitelist">
+              {(autotransfer.autotransfer_secondary_whitelist.length &&
+                autotransfer.autotransfer_secondary_whitelist.join(', ')) ||
+                'Everything'}
               <Button
-                content={autotransfer.autotransfer_min_amount}
                 onClick={() =>
                   act('set_attribute', {
-                    attribute: 'b_autotransfer_min_amount',
+                    attribute: 'b_autotransfer_secondary_whitelist',
                   })
                 }
+                ml={1}
+                icon="plus"
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Auto-Transfer Max Amount">
+            <LabeledList.Item label="Auto-Transfer Secondary Blacklist">
+              {(autotransfer.autotransfer_secondary_blacklist.length &&
+                autotransfer.autotransfer_secondary_blacklist.join(', ')) ||
+                'Nothing'}
               <Button
-                content={autotransfer.autotransfer_max_amount}
                 onClick={() =>
                   act('set_attribute', {
-                    attribute: 'b_autotransfer_max_amount',
+                    attribute: 'b_autotransfer_secondary_blacklist',
                   })
                 }
+                ml={1}
+                icon="plus"
               />
             </LabeledList.Item>
           </LabeledList>
@@ -1724,6 +1810,11 @@ const VoreSelectedBellyLiquidOptions = (props, context) => {
     max_mush,
     min_mush,
     item_mush_val,
+    metabolism_overlay,
+    metabolism_mush_ratio,
+    max_ingested,
+    custom_ingested_color,
+    custom_ingested_alpha,
   } = belly;
 
   return (
@@ -1928,6 +2019,61 @@ const VoreSelectedBellyLiquidOptions = (props, context) => {
                 })
               }
               content={liq_interacts.item_mush_val + ' fullness per item'}
+            />
+          </LabeledList.Item>
+          <LabeledList.Item label="Metabolism Overlay">
+            <Button
+              onClick={() =>
+                act('liq_set_attribute', {
+                  liq_attribute: 'b_metabolism_overlay',
+                })
+              }
+              icon={
+                liq_interacts.metabolism_overlay ? 'toggle-on' : 'toggle-off'
+              }
+              selected={liq_interacts.metabolism_overlay}
+              content={liq_interacts.metabolism_overlay ? 'On' : 'Off'}
+            />
+          </LabeledList.Item>
+          <LabeledList.Item label="Metabolism Mush Ratio">
+            <Button
+              onClick={() =>
+                act('liq_set_attribute', {
+                  liq_attribute: 'b_metabolism_mush_ratio',
+                })
+              }
+              content={
+                liq_interacts.metabolism_mush_ratio +
+                ' fullness per reagent unit'
+              }
+            />
+          </LabeledList.Item>
+          <LabeledList.Item label="Metabolism Overlay Scaling">
+            <Button
+              onClick={() =>
+                act('liq_set_attribute', {
+                  liq_attribute: 'b_max_ingested',
+                })
+              }
+              content={liq_interacts.max_ingested}
+            />
+          </LabeledList.Item>
+          <LabeledList.Item label="Custom Metabolism Color">
+            <LiquidColorInput
+              action_name="b_custom_ingested_color"
+              value_of={null}
+              back_color={liq_interacts.custom_ingested_color}
+              name_of="Custom Metabolism Color"
+            />
+          </LabeledList.Item>
+          <LabeledList.Item label="Metabolism Overlay Alpha">
+            <Button
+              onClick={() =>
+                act('liq_set_attribute', {
+                  liq_attribute: 'b_custom_ingested_alpha',
+                })
+              }
+              content={liq_interacts.custom_ingested_alpha}
             />
           </LabeledList.Item>
           <LabeledList.Item label="Purge Liquids">
