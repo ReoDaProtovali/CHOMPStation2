@@ -66,9 +66,12 @@
 
 /datum/ai_holder/simple_mob/retaliate/wolftaur
 	base_wander_delay = 8
+	belly_attack = FALSE
 
 /mob/living/simple_mob/vore/wolftaur/init_vore()
-	..()
+	if(!voremob_loaded) //CHOMPAdd
+		return //CHOMPAdd
+	.=..() //CHOMPEdit
 	var/obj/belly/B = vore_selected
 	B.name = "stomach"
 	B.desc = "After a gruelling compressive traversal down through the taur's gullet, you briefly get deposited in an oppressively tight stomach at it's humanoid waist. However, the wolf has little interest in keeping you here, instead treating you as a mere snack, an orifice opens beneath you and you're soon dragged deeper into her depths. Soon you're splashing into an active, waiting caustic slurry, and the world around you drops as though you're trapped in a hammock. The taur's underbelly sags with your weight, and you feel a heavy pat from the woman outside settling in to make the most of her meal."
@@ -88,40 +91,70 @@
 	desc = "What the hell is this outfit!?"
 	icon_state = "wolftaurclown"
 	random_skin = 0
+	icon_living = "wolftaurclown"
+	icon_rest = "wolftaurclown_rest"
+	icon_dead = "wolftaurclown-dead"
 
 /mob/living/simple_mob/vore/wolftaur/white
 	icon_state = "wolftaurwhite"
 	random_skin = 0
+	icon_living = "wolftaurwhite"
+	icon_rest = "wolftaurwhite_rest"
+	icon_dead = "wolftaurwhite-dead"
 
 /mob/living/simple_mob/vore/wolftaur/whiteclothed
 	icon_state = "wolftaurwhitec"
 	random_skin = 0
+	icon_living = "wolftaurwhitec"
+	icon_rest = "wolftaurwhitec_rest"
+	icon_dead = "wolftaurwhitec-dead"
 
 /mob/living/simple_mob/vore/wolftaur/brown
 	icon_state = "wolftaurbrown"
 	random_skin = 0
+	icon_living = "wolftaurbrown"
+	icon_rest = "wolftaurbrown_rest"
+	icon_dead = "wolftaurbrown-dead"
 
 /mob/living/simple_mob/vore/wolftaur/brownclothed
 	icon_state = "wolftaurbrownc"
 	random_skin = 0
+	icon_living = "wolftaurbrownc"
+	icon_rest = "wolftaurbrownc_rest"
+	icon_dead = "wolftaurbrownc-dead"
 
 /mob/living/simple_mob/vore/wolftaur/black
 	icon_state = "wolftaurblack"
 	random_skin = 0
+	icon_living = "wolftaurblack"
+	icon_rest = "wolftaurblack_rest"
+	icon_dead = "wolftaurblack-dead"
 
 /mob/living/simple_mob/vore/wolftaur/blackclothed
 	icon_state = "wolftaurblackc"
 	random_skin = 0
+	icon_living = "wolftaurblackc"
+	icon_rest = "wolftaurblackc_rest"
+	icon_dead = "wolftaurblackc-dead"
 
 /mob/living/simple_mob/vore/wolftaur/red
 	icon_state = "wolftaurwood"
 	random_skin = 0
+	icon_living = "wolftaurwood"
+	icon_rest = "wolftaurwood_rest"
+	icon_dead = "wolftaurwood-dead"
 
 /mob/living/simple_mob/vore/wolftaur/redclothed
 	icon_state = "wolftaurwoodc"
 	random_skin = 0
+	icon_living = "wolftaurwoodc"
+	icon_rest = "wolftaurwoodc_rest"
+	icon_dead = "wolftaurwoodc-dead"
 
 /mob/living/simple_mob/vore/wolftaur/dark
 	icon_state = "wolftaurdark"
 	random_skin = 0
+	icon_living = "wolftaurdark"
+	icon_rest = "wolftaurdark_rest"
+	icon_dead = "wolftaurdark-dead"
 
