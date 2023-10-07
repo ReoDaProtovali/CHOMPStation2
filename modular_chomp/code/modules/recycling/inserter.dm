@@ -1,8 +1,8 @@
 /obj/structure/disposaloutlet/inserter
 	name = "pneumatic inserter"
 	desc = "a machine intended to assist with logistics by automatically sending whatever gets piped into it into whatever it's tube is stuck into"
-	icon = ""
-	icon_state = ""
+	icon = 'icons/obj/pipes/disposal.dmi'
+	icon_state = "outlet" //Temporary...
 
 	var/attached = null		//What we're attached to
 	var/output_dest = null	//Where stuff goes

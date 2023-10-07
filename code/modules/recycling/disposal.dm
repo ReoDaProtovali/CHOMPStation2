@@ -1593,6 +1593,13 @@
 			to_chat(user, "You attach the screws around the power connection.")
 			playsound(src, I.usesound, 50, 1)
 			return
+	else if(I.has_tool_quality(TOOL_MULTITOOL) && mode==1)
+		var/newdist = tgui_input_number(user, "Set a new distance for the outlet to eject (1-5)", "Outlet ejection force adjustment", launch_dist, 5, 1) //Ejects 1-5 tiles from a default of 3
+		if(!newdist)
+			return
+		to_chat(user, "You set the ejection distance to [newdist]")
+		launch_dist = newdist
+		return
 	else if(I.has_tool_quality(TOOL_WELDER) && mode==1)
 		var/obj/item/weapon/weldingtool/W = I.get_welder()
 		if(W.remove_fuel(0,user))
