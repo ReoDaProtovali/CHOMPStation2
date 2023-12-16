@@ -467,6 +467,10 @@
 	var/wrapcheck = 0
 	var/obj/structure/disposalholder/H = new()	// virtual holder object which actually
 												// travels through the pipes.
+	//CHOMPEdit: This should fix the issue with your vision lagging behind for a second when getting flushed.
+	for(var/mob/M in src)
+		M.client.eye = H
+	//CHOMPEdit end.
 	//Hacky test to get drones to mail themselves through disposals.
 	for(var/mob/living/silicon/robot/drone/D in src)
 		wrapcheck = 1
@@ -1417,6 +1421,7 @@
 /obj/structure/disposalpipe/trunk
 	icon_state = "pipe-t"
 	var/obj/linked 	// the linked obj/machinery/disposal or obj/disposaloutlet
+					// CHOMPEDIT: Or /obj/machinery/disposal_machinery
 
 /obj/structure/disposalpipe/trunk/Initialize()
 	..()
@@ -1448,6 +1453,11 @@
 	var/obj/structure/disposaloutlet/O = locate() in loc
 	if(O)
 		linked = O
+	//CHOMPEdit: Disposal machinery
+	var/obj/machinery/disposal_machine/M = locate() in loc
+	if(M)
+		linked = M
+	//CHOMPEdit end
 
 // Override attackby so we disallow trunkremoval when somethings ontop
 /obj/structure/disposalpipe/trunk/attackby(var/obj/item/I, var/mob/user)
@@ -1488,7 +1498,9 @@
 	if(H.dir == DOWN)		// we just entered from a disposer
 		return ..()		// so do base transfer proc
 	// otherwise, go to the linked object
-	if(linked)
+	//CHOMPEdit: Support for disposal machinery
+	if(linked && H)
+		/*
 		var/obj/structure/disposaloutlet/O = linked
 		if(istype(O) && (H))
 			O.expel(H)	// expel at outlet
@@ -1496,6 +1508,16 @@
 			var/obj/machinery/disposal/D = linked
 			if(H)
 				D.expel(H)	// expel at disposal
+		*/
+		if(istype(linked, obj/structure/disposaloutlet))
+			var/obj/structure/disposaloutlet/O = linked
+			O.expel(H)	// expel at outlet
+		else if(istype(linked, obj/machinery/disposal))
+			var/obj/machinery/disposal/D = linked
+			D.expel(H)	// expel at disposal
+		else
+			if(istype(linked, obj/machinery/disposal_machinery))
+
 	else
 		if(H)
 			src.expel(H, src.loc, 0)	// expel at turf

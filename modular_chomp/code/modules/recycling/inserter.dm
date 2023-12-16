@@ -1,3 +1,10 @@
+/**
+ * Here's my attempt at making something "entirely" on my own.
+ * Entirely being a hapharzard mix of Verkie's vac-pack code, old feeder code and finally disposal outlet code.
+ * Half vorny passion project, half industrial desire to automate everything passion project, I hope it leads to some fun scenes.
+ * -Reo
+ */
+
 /obj/structure/disposaloutlet/inserter
 	name = "pneumatic inserter"
 	desc = "a machine intended to assist with logistics by automatically sending whatever gets piped into it into whatever it's tube is stuck into"
@@ -12,10 +19,10 @@
 		/obj/machinery/autolathe	//system of accessing what it uses than just looking in it's contents.
 	)
 
-/obj/structure/disposaloutlet/inserter/Initialize()
+/obj/machinery/disposal_machinery/inserter/Initialize()
 	. = ..()
 
-/obj/structure/disposaloutlet/inserter/MouseDrop(over_object, src_location) // Half stolen from feeder.dm
+/obj/machinery/disposal_machinery/inserter/MouseDrop(over_object, src_location) // Half stolen from feeder.dm
 	..()
 
 	if(!isliving(usr))
@@ -48,7 +55,7 @@
 		to_chat(usr, "The outlet tube cant be inserted into that")
 		return
 
-/obj/structure/disposaloutlet/inserter/proc/eject(var/obj/structure/disposalholder/H)
+/obj/machinery/disposal_machinery/inserter/proc/eject(var/obj/structure/disposalholder/H)
 
 	//flick()
 	playsound("sound/rakshasa/corrosion3.ogg")

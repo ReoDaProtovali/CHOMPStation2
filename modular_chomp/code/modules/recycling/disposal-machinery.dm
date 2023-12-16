@@ -1,5 +1,5 @@
 //Special type of frame that connects to disposal pipes
-/obj/structure/frame/disposalMachinery
-	name = "pneumatic frame"
+/obj/machinery/disposal_machinery
+	name = "pneumatic machine"
 
-	var/
+	var/linked //The trunk this is linked to. Might not be used.
