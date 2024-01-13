@@ -5,7 +5,7 @@
  * -Reo
  */
 
-/obj/structure/disposaloutlet/inserter
+/obj/structure/disposal_machinery/inserter
 	name = "pneumatic inserter"
 	desc = "a machine intended to assist with logistics by automatically sending whatever gets piped into it into whatever it's tube is stuck into"
 	icon = 'icons/obj/pipes/disposal.dmi'
@@ -38,7 +38,7 @@
 		if(istype(over_object, /mob/living))	//For fun...
 			var/mob/living/target = over_object
 			if(!is_vore_predator(target) || !target.feeding)	//Gotta be into it...
-				to_chat(usr, "They arnt able to be fed")
+				to_chat(usr, "[target] isnt able to be fed")
 				return
 			var/confirm = tgui_alert(usr, "[target == usr ? "Shove the tube in yourself?" : "Shove the tube in [target]?"]", "Confirmation", list("Yes!", "Cancel"))
 			if(!confirm == "Yes!")
@@ -55,20 +55,15 @@
 		to_chat(usr, "The outlet tube cant be inserted into that")
 		return
 
-/obj/machinery/disposal_machinery/inserter/proc/eject(var/obj/structure/disposalholder/H)
-
-	//flick()
-	playsound("sound/rakshasa/corrosion3.ogg")
-	if(!H)
-		return
-	H.vent_gas(src.loc)
+/obj/machinery/disposal_machinery/inserter/eject(var/obj/structure/disposalholder/H)
+	. = ..()
 
 	if(clogged) //We wont send our contents anywhere if we're clogged
-		playsound("sound/machines/warning-buzzer.ogg")
+		playsound(src, "sound/machines/warning-buzzer.ogg")
 		visible_message("\the [src] shudders for a moment as it tries to release something")
 		for(var/atom/movable/AM in H)
 			sleep(1)
-			playsound("sound/effects/clang.ogg")
+			playsound(src, "sound/effects/clang.ogg")
 			AM.forceMove(src.contents) //Wecome to the party!
 
 	if(!attached) //If it's not attached to anything, it acts like a disposal outlet. But kinda sprays stuff around.
@@ -87,6 +82,7 @@
 
 	if(istype(attached, /mob/living)) //We're attached to someone, send our stuff to belly
 		sleep(10) //Slight delay before being dunked into guts
+		playsound(src, "sound/rakshasa/corrosion3.ogg")
 		for(var/atom/movable/AM in src.contents)
 			if(istype(AM, /mob/living))
 				var/mob/living/snack = AM

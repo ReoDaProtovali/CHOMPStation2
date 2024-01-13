@@ -1517,6 +1517,8 @@
 			D.expel(H)	// expel at disposal
 		else
 			if(istype(linked, obj/machinery/disposal_machinery))
+			var/obj/machinery/disposal/M = linked
+			M.expel(H)
 
 	else
 		if(H)
