@@ -199,7 +199,7 @@
 
 	if (disabilities & EPILEPSY)
 		if ((prob(1) && paralysis < 1))
-			to_chat(src, "<font color='red'>You have a seizure!</font>")
+			to_chat(src, span_red("You have a seizure!"))
 			for(var/mob/O in viewers(src, null))
 				if(O == src)
 					continue
@@ -276,6 +276,10 @@
 	if(getFireLoss())
 		if((COLD_RESISTANCE in mutations) || (prob(1)))
 			heal_organ_damage(0,1)
+
+	 if(stat != DEAD) //CHOMPadd: Until I find where nutrion heal code is anyway
+	 	if((mRegen in mutations))
+	 		heal_organ_damage(0.2,0.2)
 
 	// DNA2 - Gene processing.
 	// The HULK stuff that was here is now in the hulk gene.
@@ -435,7 +439,7 @@
 				if(prob(50) && prob(100 * RADIATION_SPEED_COEFFICIENT))
 					spawn vomit()
 				if(!paralysis && prob(30) && prob(100 * RADIATION_SPEED_COEFFICIENT)) //CNS is shutting down.
-					to_chat(src, "<font color='Critical'>You have a seizure!</font>")
+					to_chat(src, "<span class='critical'>You have a seizure!</span>")
 					Paralyse(10)
 					make_jittery(1000)
 					if(!lying)
@@ -495,7 +499,7 @@
 					drop_item()
 			if(accumulated_rads > 700) // (12Gy)
 				if(!paralysis && prob(1) && prob(100 * RADIATION_SPEED_COEFFICIENT)) //1 in 1000 chance per tick.
-					to_chat(src, "<font color='Critical'>You have a seizure!</font>")
+					to_chat(src, "<span class='critical'>You have a seizure!</span>")
 					Paralyse(10)
 					make_jittery(1000)
 					if(!lying)
@@ -547,6 +551,9 @@
 
 /mob/living/carbon/human/handle_breath(datum/gas_mixture/breath)
 	if(status_flags & GODMODE)
+		return
+
+	if(mNobreath in src.mutations) //CHOMPadd
 		return
 
 	if(suiciding)
@@ -1274,8 +1281,8 @@
 
 		if(hallucination)
 			if(hallucination >= 20 && !(species.flags & (NO_POISON|IS_PLANT|NO_HALLUCINATION)) )
-				if(prob(3))
-					fake_attack(src)
+				//if(prob(3)) //ChompREMOVE fake_attacker - EXTREME image qdel usage.
+					//fake_attack(src) //ChompREMOVE fake_attacker - EXTREME image qdel usage.
 				if(!handling_hal)
 					spawn handle_hallucinations() //The not boring kind!
 				if(client && prob(5))
@@ -1589,7 +1596,8 @@
 		else
 			clear_alert("high")
 
-		if(!isbelly(loc) && !previewing_belly) //VOREStation Add - Belly fullscreens safety //CHOMPEdit
+		//CHOMPEdit - surrounding_belly() used instead of isbelly(loc) to not clear indirect vorefx
+		if(!surrounding_belly() && !previewing_belly) //VOREStation Add - Belly fullscreens safety //CHOMPEdit
 			clear_fullscreen("belly")
 			//clear_fullscreen("belly2") //Chomp disable, using our own implementation
 			//clear_fullscreen("belly3") //Chomp disable, using our own implementation
@@ -1771,12 +1779,14 @@
 	if(isturf(loc) && rand(1,1000) == 1)
 		var/turf/T = loc
 		if(T.get_lumcount() <= LIGHTING_SOFT_THRESHOLD)
+			/* CHOMPEdit Start
 			//VOREStation Add Start
 			if(text2num(time2text(world.timeofday, "MM")) == 4)
 				if(text2num(time2text(world.timeofday, "DD")) == 1)
 					playsound_local(src,pick(scawwySownds),50, 0)
 					return
 			//VOREStation Add End
+			*/ // CHOMPedit End
 			playsound_local(src,pick(scarySounds),50, 1, -1)
 
 /mob/living/carbon/human/handle_stomach()

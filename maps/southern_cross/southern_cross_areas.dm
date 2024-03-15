@@ -98,6 +98,7 @@
 	name = "Mountains"
 	icon_state = "darkred"
 
+/* //Sky islands removal, lack of use
 /area/surface/outside/wilderness/skylands
 	name = "Floating Islands"
 	icon_state = "blue"
@@ -106,6 +107,8 @@
 	name = "Sky"
 	icon_state = "red"
 	luminosity = 1
+*/
+
 
 /area/surface/outside/path/wilderness
 
@@ -145,6 +148,10 @@
 	name = "Tunnels"
 	icon_state = "explored"
 
+/area/surface/cave/explored/trader
+	name = "Trader Hideout"
+	icon_state = "hideaway"
+
 /area/surface/cave/unexplored/normal
 	name = "Tunnels"
 	icon_state = "unexplored"
@@ -175,7 +182,9 @@
 	icon_state = "Sleep"
 	soundproofed = TRUE
 	limit_mob_size = FALSE
+	block_suit_sensors = TRUE
 	flags = RAD_SHIELDED
+	block_tracking = TRUE
 
 /area/surface/outpost/shelter/exterior
 	name = "Wilderness Shelter Exterior"
@@ -208,6 +217,10 @@
 /area/surface/outside/valley/river
 	name = "Valley River"
 	icon_state = "yellow"
+
+/area/surface/outside/valley/end
+	name = "Valley's End"
+	icon_state = "red"
 
 // Main mining outpost
 /area/surface/outpost/mining_main
@@ -1348,6 +1361,10 @@ z
 	name = "Third Deck Aft Starboard Maintenance"
 	icon_state = "asmaint"
 
+/area/maintenance/thirddeck/hiddenkitchen
+	name = "Third Deck Hidden Kitchen"
+	icon_state = "asmaint"
+
 /area/maintenance/thirddeck/dormsatmos
 	name = "Third Deck Dorm's Atmospherics"
 	icon_state = "asmaint"
@@ -2185,6 +2202,9 @@ End Chompstation Edit*/
 	icon_state = "storage"
 	ambience = AMBIENCE_RUINS
 
+/area/shuttle/overmap/sif
+	name = "wilderness site"
+	icon_state = "shuttlered"
 
 //Temp Removal TFF 15/2/20
 /*

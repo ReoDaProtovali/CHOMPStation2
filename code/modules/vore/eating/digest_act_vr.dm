@@ -4,6 +4,8 @@
 
 // Ye default implementation.
 /obj/item/proc/digest_act(atom/movable/item_storage = null, touchable_amount, splashing = 0) //CHOMPEdit
+	if(!digestable) //CHOMPAdd
+		return FALSE //CHOMPAdd
 	if(istype(item_storage, /obj/item/device/dogborg/sleeper))
 		if(istype(src, /obj/item/device/pda))
 			var/obj/item/device/pda/P = src
@@ -11,6 +13,9 @@
 				P.id = null
 
 		for(var/mob/living/voice/V in possessed_voice) // Delete voices.
+			V.ghostize(0) //CHOMPAdd - Prevent Reenter Corpse sending observers to the shadow realm
+			V.stat = DEAD //CHOMPAdd - Helps with autosleeving
+			if(V.mind) V.mind.vore_death = 1 //CHOMPAdd - Digested item TFs get vore_death timer
 			V.Destroy() //Destroy the voice.
 		for(var/mob/living/M in contents)//Drop mobs from objects(shoes) before deletion
 			M.forceMove(item_storage)
@@ -74,8 +79,10 @@
 			var/obj/item/device/pda/P = src
 			if(P.id)
 				P.id = null
+		/* CHOMPEdit Start - This is handled lower down now
 		for(var/mob/living/voice/V in possessed_voice) // Delete voices.
 			V.Destroy() //Destroy the voice.
+		CHOMPEdit End */
 		for(var/mob/living/M in contents)//Drop mobs from objects(shoes) before deletion
 			if(item_storage)
 				M.forceMove(item_storage)
@@ -105,8 +112,19 @@
 		else
 			soundfile = pick('sound/vore/shortgurgles/gurgle_S1.ogg', 'sound/vore/shortgurgles/gurgle_S2.ogg', 'sound/vore/shortgurgles/gurgle_S3.ogg')
 		playsound(src, soundfile, vol = g_sound_volume, vary = 1, falloff = VORE_SOUND_FALLOFF, frequency = noise_freq, preference = /datum/client_preference/eating_noises, volume_channel = VOLUME_CHANNEL_VORE) //CHOMPEdit
-		if(istype(B) && B.recycle(src))
+		//CHOMPEdit Start - Allow those turned into items to become the recycled item
+		var/recycled = B.recycle(src)
+		if(!recycled)
+			for(var/mob/living/voice/V in possessed_voice) // Delete voices.
+				V.ghostize(0) //CHOMPAdd - Prevent Reenter Corpse sending observers to the shadow realm
+				V.stat = DEAD //CHOMPAdd - Helps with autosleeving
+				if(V.mind) V.mind.vore_death = 1 //CHOMPAdd - Digested item TFs get vore_death timer
+				V.Destroy() //Destroy the voice.
+		if(istype(B) && recycled)
+		//CHOMPEdit End
 			g_damage = w_class / 2
+			if(B.item_digest_logs)
+				to_chat(B.owner,"<span class='notice'>[src] was digested inside your [lowertext(B.name)].</span>")
 			qdel(src)
 		else if(istype(src,/obj/item/stack))
 			var/obj/item/stack/S = src
@@ -122,6 +140,8 @@
 					reagents.trans_to_holder(H.ingested, (reagents.total_volume), B.nutrition_percent / 100, 0)
 				else if(isliving(B.owner))
 					B.owner.nutrition += 15 * w_class * B.nutrition_percent / 100
+			if(B.item_digest_logs)
+				to_chat(B.owner,"<span class='notice'>[src] was digested inside your [lowertext(B.name)].</span>")
 			qdel(src)//CHOMPEdit End
 	if(g_damage > w_class)
 		return w_class
@@ -202,6 +222,25 @@
 		var/obj/belly/B = item_storage
 		if(istype(B) && B.recycling)
 			return FALSE
+	. = ..()
+
+/obj/item/ore_chunk/digest_act(atom/movable/item_storage = null) //CHOMPAdd
+	if(isbelly(item_storage))
+		var/obj/belly/B = item_storage
+		if(istype(B) && B.recycling)
+			return FALSE
+	. = ..()
+
+/obj/item/weapon/reagent_containers/food/rawnutrition/digest_act(atom/movable/item_storage = null) //CHOMPAdd
+	if(isbelly(item_storage))
+		var/obj/belly/B = item_storage
+		if(istype(B) && B.storing_nutrition)
+			return FALSE
+		else if(isliving(B.owner))
+			B.owner.nutrition += stored_nutrition
+			stored_nutrition = 0
+			qdel(src)
+			return w_class
 	. = ..()
 
 /////////////

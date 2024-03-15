@@ -7,6 +7,14 @@
 	build_path = /obj/item/weapon/gun/launcher/confetti_cannon
 	sort_string = "MAAVD"
 
+/datum/design/item/weapon/energy/metamorphosisray
+	name = "metamorphosis ray"
+	id = "metamorphosisray"
+	req_tech = list(TECH_MATERIAL = 3, TECH_ENGINEERING = 3, TECH_POWER = 4, TECH_BIO = 5, TECH_BLUESPACE = 4, TECH_ILLEGAL = 5)
+	materials = list(MAT_STEEL = 1000, MAT_GLASS = 2000, MAT_URANIUM = 500, MAT_PHORON = 1500)
+	build_path = /obj/item/weapon/gun/energy/mouseray/metamorphosis
+	sort_string = "MAAVE"
+
 //Phase weapon with lock safeties.
 /datum/design/item/weapon/phase/phase_pistol
 	id = "phasepistol"
@@ -85,4 +93,13 @@
 	req_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 6, TECH_POWER = 5)
 	materials = list(MAT_STEEL = 4000, MAT_GLASS = 1000, MAT_DIAMOND = 2000, MAT_TITANIUM = 4000, MAT_LEAD = 4000, MAT_URANIUM = 5000)
 	build_path = /obj/item/weapon/gun/energy/lasercannon
+	sort_string = "MAAAD"
+
+//Wierd weapon time
+/datum/design/item/weapon/energy/cyrogun
+	desc = "An improperly researched and poorly built weapon, specialized in utlizing frost offensively.."
+	id = "cryogun"
+	req_tech = list(TECH_COMBAT = 7, TECH_MATERIAL = 8, TECH_POWER = 7, TECH_PRECURSOR = 4, TECH_ILLEGAL = 8)
+	materials = list(MAT_GLASS = 3000, MAT_MORPHIUM = 4000, MAT_DURASTEEL = 6000, MAT_LEAD = 6000, MAT_METALHYDROGEN = 3000)
+	build_path = /obj/item/weapon/gun/energy/freezegun
 	sort_string = "MAAAD"

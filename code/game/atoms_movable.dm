@@ -238,7 +238,7 @@
 	for (var/datum/light_source/light as anything in light_sources) // Cycle through the light sources on this atom and tell them to update.
 		light.source_atom.update_light()
 
-	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, old_loc, direction)
+	//SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, old_loc, direction) CHOMPEdit - Why was this comsig here twice?
 
 	return TRUE
 
@@ -374,7 +374,7 @@
 		return TRUE
 
 /atom/movable/proc/onTransitZ(old_z,new_z)
-	GLOB.z_moved_event.raise_event(src, old_z, new_z)
+	SEND_SIGNAL(src, COMSIG_OBSERVER_Z_MOVED, old_z, new_z)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_Z_CHANGED, old_z, new_z)
 	for(var/atom/movable/AM as anything in src) // Notify contents of Z-transition. This can be overridden IF we know the items contents do not care.
 		AM.onTransitZ(old_z,new_z)

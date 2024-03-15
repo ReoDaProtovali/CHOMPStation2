@@ -99,6 +99,11 @@
 	for(var/modifier_type in R.genetic_modifiers)
 		H.add_modifier(modifier_type)
 
+	//Apply legs
+	H.digitigrade = R.dna.digitigrade // ensure clone mob has digitigrade var set appropriately
+	if(H.dna.digitigrade <> R.dna.digitigrade)
+		H.dna.digitigrade = R.dna.digitigrade // ensure cloned DNA is set appropriately from record??? for some reason it doesn't get set right despite the override to datum/dna/Clone()
+
 	//Apply damage
 	H.adjustCloneLoss((H.getMaxHealth() - config.health_threshold_dead)*-0.75)
 	H.Paralyse(4)
@@ -119,6 +124,11 @@
 	H.ooc_notes = current_project.body_oocnotes
 	H.ooc_notes_likes = current_project.body_ooclikes
 	H.ooc_notes_dislikes = current_project.body_oocdislikes
+	//CHOMPEdit Start
+	H.ooc_notes_favs = current_project.body_oocfavs
+	H.ooc_notes_maybes = current_project.body_oocmaybes
+	H.ooc_notes_style = current_project.body_oocstyle
+	//CHOMPEdit End
 	H.flavor_texts = current_project.mydna.flavor.Copy()
 	H.resize(current_project.sizemult, FALSE)
 	H.appearance_flags = current_project.aflags
@@ -342,6 +352,11 @@
 	H.ooc_notes = current_project.body_oocnotes
 	H.ooc_notes_likes = current_project.body_ooclikes
 	H.ooc_notes_dislikes = current_project.body_oocdislikes
+	//CHOMPEdit Start
+	H.ooc_notes_favs = current_project.body_oocfavs
+	H.ooc_notes_maybes = current_project.body_oocmaybes
+	H.ooc_notes_style = current_project.body_oocstyle
+	//CHOMPEdit End
 	H.flavor_texts = current_project.mydna.flavor.Copy()
 	H.resize(current_project.sizemult)
 	H.appearance_flags = current_project.aflags
@@ -589,6 +604,11 @@
 	occupant.ooc_notes = MR.mind_oocnotes
 	occupant.ooc_notes_likes = MR.mind_ooclikes
 	occupant.ooc_notes_dislikes = MR.mind_oocdislikes
+	//CHOMPEdit Start
+	occupant.ooc_notes_favs = MR.mind_oocfavs
+	occupant.ooc_notes_maybes = MR.mind_oocmaybes
+	occupant.ooc_notes_style = MR.mind_oocstyle
+	//CHOMPEdit End
 
 	occupant.apply_vore_prefs() //Cheap hack for now to give them SOME bellies.
 	if(MR.one_time)

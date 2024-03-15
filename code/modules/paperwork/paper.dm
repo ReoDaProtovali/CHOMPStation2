@@ -376,8 +376,12 @@
 		t = replacetext(t, "\[/row\]", "") //CHOMPEDIT: nuking closing statements for rows.
 		t = replacetext(t, "\[cell\]", "<td>")
 		t = replacetext(t, "\[/cell\]", "") //CHOMPEDIT: nuking closing statements for cells.
-		t = replacetext(t, "\[logo\]", "<img src = https://raw.githubusercontent.com/CHOMPStation2/CHOMPStation2/master/html/images/ntlogo.png>") //CHOMPEdit
-		t = replacetext(t, "\[sglogo\]", "<img src = https://raw.githubusercontent.com/CHOMPStation2/CHOMPStation2/master/html/images/sglogo.png>") //CHOMPEdit
+		 //CHOMPEdit Start
+		t = replacetext(t, "\[logo\]", "<img src = https://raw.githubusercontent.com/CHOMPStation2/CHOMPStation2/master/html/images/ntlogo.png>")
+		t = replacetext(t, "\[sglogo\]", "<img src = https://raw.githubusercontent.com/CHOMPStation2/CHOMPStation2/master/html/images/sglogo.png>")
+		t = replacetext(t, "\[trlogo\]", "<img src = https://raw.githubusercontent.com/CHOMPStation2/CHOMPStation2/master/html/images/trader.png>")
+		t = replacetext(t, "\[pclogo\]", "<img src = https://raw.githubusercontent.com/CHOMPStation2/CHOMPStation2/master/html/images/pclogo.png>")
+		//CHOMPEdit End
 
 		t = "<font face=\"[deffont]\" color=[P ? P.colour : "black"]>[t]</font>"
 	else // If it is a crayon, and he still tries to use these, make them empty!
@@ -436,7 +440,7 @@
 				qdel(src)
 
 			else
-				to_chat(user, "<font color='red'>You must hold \the [P] steady to burn \the [src].</font>")
+				to_chat(user, span_red("You must hold \the [P] steady to burn \the [src]."))
 
 
 /obj/item/weapon/paper/Topic(href, href_list)
@@ -548,12 +552,16 @@
 
 	if(istype(P, /obj/item/weapon/clipboard))
 		var/obj/item/weapon/clipboard/CB = P
+		if(src.loc == user)
+			user.drop_from_inventory(src)
 		src.loc = CB
 		CB.toppaper = src
 		CB.update_icon()
 		to_chat(user, "<span class='notice'>You clip the [src] onto \the [CB].</span>")
 
 	if(istype(P, /obj/item/weapon/folder))
+		if(src.loc == user)
+			user.drop_from_inventory(src)
 		src.loc = P
 		P.update_icon()
 		to_chat(user, "<span class='notice'>You tuck the [src] into \the [P].</span>")
@@ -566,9 +574,9 @@
 				add_fingerprint(user)
 				return
 		var/obj/item/weapon/paper_bundle/B = new(src.loc)
-		if (name != "paper")
+		if (name != initial(name))
 			B.name = name
-		else if (P.name != "paper" && P.name != "photo")
+		else if (P.name != initial(P.name))
 			B.name = P.name
 		user.drop_from_inventory(P)
 		if (istype(user, /mob/living/carbon/human))

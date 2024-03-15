@@ -94,9 +94,11 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 			else if(heart.is_bruised())
 				blood_volume_raw *= 0.7
 				blood_volume *= 0.7
+			else if(heart.damage > 5) //CHOMPedit, //CHOMPedit, so 0.00005 heart damage isnt 20% of blood missing, now its 5
+				blood_volume_raw *= 0.9 //chompedit from 0.8 to 0.9
+				blood_volume *= 0.9 //chompedit from 0.8 to 0.9
 			else if(heart.damage)
-				blood_volume_raw *= 0.8
-				blood_volume *= 0.8
+				return
 
 		//Effects of bloodloss
 		var/dmg_coef = 1				//Lower means less damage taken
@@ -118,10 +120,10 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 				pale = 1
 				update_icons_body()
 				var/word = pick("dizzy","woozy","faint","disoriented","unsteady")
-				to_chat(src, "<font color='red'>You feel slightly [word]</font>")
+				to_chat(src, span_red("You feel slightly [word]"))
 			if(prob(1))
 				var/word = pick("dizzy","woozy","faint","disoriented","unsteady")
-				to_chat(src, "<font color='red'>You feel [word]</font>")
+				to_chat(src, span_red("You feel [word]"))
 			if(getOxyLoss() < 20 * threshold_coef)
 				adjustOxyLoss(3 * dmg_coef)
 		else if(blood_volume_raw >= species.blood_volume*species.blood_level_danger)
@@ -135,13 +137,13 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 			if(prob(15))
 				Paralyse(rand(1,3))
 				var/word = pick("dizzy","woozy","faint","disoriented","unsteady")
-				to_chat(src, "<font color='red'>You feel dangerously [word]</font>")
+				to_chat(src, span_red("You feel dangerously [word]"))
 		else if(blood_volume_raw >= species.blood_volume*species.blood_level_fatal)
 			adjustOxyLoss(5 * dmg_coef)
 //			adjustToxLoss(3 * dmg_coef)
 			if(prob(15))
 				var/word = pick("dizzy","woozy","faint","disoriented","unsteady")
-				to_chat(src, "<font color='red'>You feel extremely [word]</font>")
+				to_chat(src, span_red("You feel extremely [word]"))
 		else //Not enough blood to survive (usually)
 			if(!pale)
 				pale = 1

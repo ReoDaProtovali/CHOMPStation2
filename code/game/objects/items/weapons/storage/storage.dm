@@ -727,13 +727,13 @@
 
 	while (cur_atom && !(cur_atom in container.contents))
 		if (isarea(cur_atom))
-			return -1
+			return INFINITY // CHOMPedit
 		if (istype(cur_atom.loc, /obj/item/weapon/storage))
 			depth++
 		cur_atom = cur_atom.loc
 
 	if (!cur_atom)
-		return -1	//inside something with a null loc.
+		return INFINITY	// CHOMPedit - inside something with a null loc.
 
 	return depth
 
@@ -745,13 +745,13 @@
 
 	while (cur_atom && !isturf(cur_atom))
 		if (isarea(cur_atom))
-			return -1
+			return INFINITY // CHOMPedit
 		if (istype(cur_atom.loc, /obj/item/weapon/storage))
 			depth++
 		cur_atom = cur_atom.loc
 
 	if (!cur_atom)
-		return -1	//inside something with a null loc.
+		return INFINITY	//CHOMPedit - inside something with a null loc.
 
 	return depth
 
@@ -869,6 +869,7 @@
 
 /atom/movable/storage_slot/Destroy()
 	held_item = null
+	..()
 
 /// Has to be this way. The fact that the overlays will be constantly mutated by other storage means we can't wait.
 /atom/movable/storage_slot/add_overlay(list/somethings)

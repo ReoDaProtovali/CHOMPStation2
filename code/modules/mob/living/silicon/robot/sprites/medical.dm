@@ -74,7 +74,7 @@
 	has_custom_open_sprites = TRUE
 
 /datum/robot_sprite/medical/worm
-	name = "W02M"
+	name = "W02M - Surgical" //CHOMPEdit
 	sprite_icon_state = "worm-crisis" //CHOMPEdit
 	has_custom_open_sprites = TRUE
 	sprite_icon = 'modular_chomp/icons/mob/wormborg.dmi' //CHOMPEdit
@@ -188,29 +188,20 @@
 	name = "Feminine Humanoid"
 	sprite_icon_state = "uptall"
 
-/datum/robot_sprite/surgical/worm //CHOMPAdd Start
-	name = "W02M"
-	sprite_icon_state = "worm-surgeon"
-	has_custom_open_sprites = TRUE
-	sprite_icon = 'modular_chomp/icons/mob/wormborg.dmi'
-	has_vore_belly_sprites = TRUE
-	has_dead_sprite = TRUE //CHOMPAdd End
-
 // Wide/dogborg sprites
 
 /datum/robot_sprite/dogborg/surgical
 	module_type = "Surgeon"
 	sprite_icon = 'icons/mob/robot/surgical_wide.dmi'
 
-	var/has_sleeper_light_indicator = FALSE
-
+/* //Handled by the normal belly code now.
 /datum/robot_sprite/dogborg/surgical/get_belly_overlay(var/mob/living/silicon/robot/ourborg)
 	if(has_sleeper_light_indicator)
 		if(ourborg.sleeper_state == 2 && !(ourborg.vore_selected?.silicon_belly_overlay_preference == "Vorebelly")) return "[sprite_icon_state]-sleeper_g"
 		else return "[sprite_icon_state]-sleeper_r"
 	else
 		return ..()
-
+*/
 /datum/robot_sprite/dogborg/surgical/do_equipment_glamour(var/obj/item/weapon/robot_module/module)
 	if(!has_custom_equipment_sprites)
 		return
@@ -264,7 +255,7 @@
 		SP.icon_state = "defibpaddles0"
 		SP.attack_verb = list("batted", "pawed", "bopped", "whapped")
 
-/datum/robot_sprite/dogborg/raptor/surgical/raptor //CHOMPEdit - changed typepath
+/datum/robot_sprite/dogborg/tall/surgical/raptor
 	name = "Raptor V-4"
 	sprite_icon_state = "raptor"
 	has_custom_equipment_sprites = TRUE
@@ -327,15 +318,14 @@
 	module_type = "Crisis"
 	sprite_icon = 'icons/mob/robot/crisis_wide.dmi'
 
-	var/has_sleeper_light_indicator = FALSE
-
+/* //Handled by the normal belly code now.
 /datum/robot_sprite/dogborg/crisis/get_belly_overlay(var/mob/living/silicon/robot/ourborg)
 	if(has_sleeper_light_indicator)
 		if(ourborg.sleeper_state == 2 && !(ourborg.vore_selected?.silicon_belly_overlay_preference == "Vorebelly")) return "[sprite_icon_state]-sleeper_g"
 		else return "[sprite_icon_state]-sleeper_r"
 	else
 		return ..()
-
+*/
 /datum/robot_sprite/dogborg/crisis/do_equipment_glamour(var/obj/item/weapon/robot_module/module)
 	if(!has_custom_equipment_sprites)
 		return
@@ -403,7 +393,7 @@
 		SP.icon_state = "defibpaddles0"
 		SP.attack_verb = list("batted", "pawed", "bopped", "whapped")
 
-/datum/robot_sprite/dogborg/raptor/crisis/raptor //CHOMPEDIT - changed typepath
+/datum/robot_sprite/dogborg/tall/crisis/raptor
 	name = "Raptor V-4"
 	sprite_icon_state = "raptor"
 	has_custom_equipment_sprites = TRUE

@@ -34,7 +34,7 @@
 
 // Quickly adds the boilerplate code to add an image and padding for the image.
 /proc/desc_panel_image(var/icon_state)
-	return "\icon[description_icons[icon_state]][EXAMINE_PANEL_PADDING]"
+	return "[bicon(description_icons[icon_state])][EXAMINE_PANEL_PADDING]"
 
 /mob/living/get_description_fluff()
 	if(flavor_text) //Get flavor text for the green text.
@@ -56,7 +56,7 @@
 	description_holders["interactions"] = A.get_description_interaction()
 
 	description_holders["name"] = "[A.name]"
-	description_holders["icon"] = "\icon[A.examine_icon()]"
+	description_holders["icon"] = "[icon2html(A.examine_icon(),src)]"
 	description_holders["desc"] = A.desc
 
 /mob/Stat()
@@ -112,7 +112,7 @@
 	var/list/results = A.examine(src)
 	if(!results || !results.len)
 		results = list("You were unable to examine that. Tell a developer!")
-	to_chat(src, "<span class='filter_notice'>[jointext(results, "<br>")]</span>")
+	to_chat(src, "<span class='infoplain'>[jointext(results, "<br>")]</span>")
 	update_examine_panel(A)
 
 /mob/proc/update_examine_panel(var/atom/A)

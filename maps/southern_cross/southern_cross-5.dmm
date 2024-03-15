@@ -167,7 +167,6 @@
 /obj/machinery/cell_charger,
 /obj/random/powercell,
 /obj/machinery/alarm{
-	frequency = 1441;
 	pixel_y = 22
 	},
 /obj/machinery/camera/network/engineering_outpost{
@@ -320,7 +319,6 @@
 	dir = 1
 	},
 /obj/machinery/alarm{
-	frequency = 1441;
 	pixel_y = 22
 	},
 /obj/structure/reagent_dispensers/fueltank,
@@ -1789,7 +1787,6 @@
 "dB" = (
 /obj/machinery/alarm{
 	dir = 8;
-	frequency = 1441;
 	pixel_x = 22
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
@@ -2443,7 +2440,6 @@
 	dir = 1
 	},
 /obj/machinery/alarm{
-	frequency = 1441;
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled,
@@ -2654,7 +2650,7 @@
 "ff" = (
 /obj/effect/shuttle_landmark{
 	base_area = /area/surface/outside/plains/normal;
-	base_turf = /turf/simulated/floor/outdoors/snow/sif/planetuse;
+	base_turf = /turf/simulated/floor/outdoors/grass/sif/planetuse;
 	landmark_tag = "outpost_nw";
 	name = "Northwest Outpost Perimiter"
 	},
@@ -3672,7 +3668,6 @@
 /area/surface/outpost/main/airlock/right_one)
 "hk" = (
 /obj/machinery/alarm{
-	frequency = 1441;
 	pixel_y = 22
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -4570,6 +4565,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/corridor)
+"iP" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/surface/outpost/wall)
 "iQ" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
@@ -5352,7 +5353,6 @@
 /area/surface/outpost/main/exploration/containment)
 "kc" = (
 /obj/machinery/alarm{
-	frequency = 1441;
 	pixel_y = 22
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -5741,7 +5741,6 @@
 /area/surface/outpost/main/exploration)
 "kO" = (
 /obj/machinery/alarm{
-	frequency = 1441;
 	pixel_y = 22
 	},
 /obj/effect/floor_decal/borderfloor/corner{
@@ -5915,7 +5914,6 @@
 /obj/structure/table/standard,
 /obj/item/weapon/storage/firstaid/regular,
 /obj/machinery/alarm{
-	frequency = 1441;
 	pixel_y = 22
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -6519,6 +6517,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/freezer,
 /area/surface/outpost/main/dorms/dorm_1)
+"mp" = (
+/obj/effect/floor_decal/techfloor/orange,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/techfloor,
+/area/surface/outpost/wall)
 "mq" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 8
@@ -8275,7 +8278,6 @@
 	amount = 25
 	},
 /obj/machinery/alarm{
-	frequency = 1441;
 	pixel_y = 22
 	},
 /turf/simulated/floor/plating,
@@ -8386,7 +8388,6 @@
 	dir = 8
 	},
 /obj/machinery/alarm{
-	frequency = 1441;
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/freezer,
@@ -8957,7 +8958,6 @@
 /obj/structure/table/glass,
 /obj/item/weapon/inflatable_duck,
 /obj/machinery/alarm{
-	frequency = 1441;
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/freezer,
@@ -12318,8 +12318,8 @@
 /turf/simulated/floor/plating{
 	icon_state = "asteroidplating2";
 	nitrogen = 93.7835;
-	temperature = 243.15;
-	oxygen = 20.7263
+	oxygen = 20.7263;
+	temperature = 243.15
 	},
 /area/surface/outpost/mining_main/exterior)
 "wN" = (
@@ -12337,6 +12337,10 @@
 	name = "cyan towel";
 	pixel_x = 2;
 	pixel_y = 4
+	},
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/surface/outpost/main/dorms/dorm_5)
@@ -12616,9 +12620,9 @@
 "xq" = (
 /turf/simulated/floor/wood{
 	nitrogen = 93.7835;
+	outdoors = 1;
 	oxygen = 20.7263;
-	temperature = 243.15;
-	outdoors = 1
+	temperature = 243.15
 	},
 /area/surface/outside/path/plains)
 "xr" = (
@@ -13462,8 +13466,8 @@
 /turf/simulated/floor/plating{
 	icon_state = "asteroidplating2";
 	nitrogen = 93.7835;
-	temperature = 243.15;
-	oxygen = 20.7263
+	oxygen = 20.7263;
+	temperature = 243.15
 	},
 /area/surface/outpost/mining_main/exterior)
 "yI" = (
@@ -13659,10 +13663,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/surface/outpost/main/gen_room/smes_right)
-"ze" = (
-/obj/machinery/telecomms/relay/preset/southerncross/skylands,
-/turf/simulated/floor/tiled/techmaint,
-/area/surface/outpost/main/tcomm)
 "zf" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -13786,6 +13786,17 @@
 	},
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/airlock/left_three)
+"zp" = (
+/obj/effect/shuttle_landmark{
+	base_area = /area/surface/outside/plains/normal;
+	base_turf = /turf/simulated/floor/outdoors/grass/sif/planetuse;
+	landmark_tag = "outpost_w";
+	name = "West Outpost Perimiter"
+	},
+/turf/simulated/floor/outdoors/grass/sif/planetuse{
+	tree_chance = 0
+	},
+/area/surface/outside/plains/normal)
 "zq" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
@@ -13913,7 +13924,9 @@
 	landmark_tag = "outpost_s";
 	name = "South of Outpost"
 	},
-/turf/simulated/floor/outdoors/grass/sif/planetuse,
+/turf/simulated/floor/outdoors/grass/sif/planetuse{
+	tree_chance = 0
+	},
 /area/surface/outside/plains/normal)
 "zD" = (
 /obj/machinery/door/firedoor/border_only,
@@ -14055,6 +14068,13 @@
 "zS" = (
 /turf/simulated/wall/r_wall,
 /area/surface/outpost/main/dorms/dorm_4)
+"zU" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/techfloor,
+/area/surface/outpost/wall)
 "zV" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/window/reinforced/full,
@@ -14219,8 +14239,8 @@
 /turf/simulated/floor/plating{
 	icon_state = "asteroidplating2";
 	nitrogen = 93.7835;
-	temperature = 243.15;
-	oxygen = 20.7263
+	oxygen = 20.7263;
+	temperature = 243.15
 	},
 /area/surface/outpost/mining_main/exterior)
 "Am" = (
@@ -15188,7 +15208,6 @@
 "BV" = (
 /obj/machinery/alarm{
 	dir = 8;
-	frequency = 1441;
 	pixel_x = 22
 	},
 /turf/simulated/floor/tiled,
@@ -15683,13 +15702,22 @@
 	},
 /turf/simulated/floor/wood,
 /area/surface/outpost/main/dorms/dorm_1)
+"CS" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/obj/machinery/computer/cryopod/gateway{
+	pixel_x = -32
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/techfloor,
+/area/surface/outpost/wall)
 "CT" = (
 /turf/simulated/wall/r_wall,
 /area/surface/outpost/main/airlock/right_one)
 "CU" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/machinery/alarm{
-	frequency = 1441;
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled,
@@ -16345,6 +16373,13 @@
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/monotile,
 /area/surface/outpost/main/airlock/left_one)
+"Eq" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/cobweb,
+/turf/simulated/floor/tiled/techfloor,
+/area/surface/outpost/wall)
 "Er" = (
 /obj/machinery/telecomms/relay/preset/southerncross/wild,
 /obj/machinery/light/small{
@@ -16813,7 +16848,6 @@
 	dir = 8
 	},
 /obj/machinery/alarm{
-	frequency = 1441;
 	pixel_y = 22
 	},
 /obj/machinery/power/apc{
@@ -16852,7 +16886,6 @@
 	dir = 1
 	},
 /obj/machinery/alarm{
-	frequency = 1441;
 	pixel_y = 22
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -18234,6 +18267,9 @@
 	color = "#FF6666";
 	name = "light red towel"
 	},
+/obj/structure/sink{
+	pixel_y = 16
+	},
 /turf/simulated/floor/tiled/freezer,
 /area/surface/outpost/main/dorms/dorm_6)
 "HZ" = (
@@ -18389,6 +18425,10 @@
 /obj/item/weapon/towel{
 	color = "#90ee90";
 	name = "green towel"
+	},
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/surface/outpost/main/dorms/dorm_3)
@@ -20639,7 +20679,6 @@
 /obj/item/clothing/shoes/sandal,
 /obj/item/clothing/shoes/sandal,
 /obj/machinery/alarm{
-	frequency = 1441;
 	pixel_y = 22
 	},
 /turf/simulated/floor/wood,
@@ -21245,7 +21284,6 @@
 	},
 /obj/machinery/alarm{
 	dir = 8;
-	frequency = 1441;
 	pixel_x = 22
 	},
 /turf/simulated/floor/tiled,
@@ -21955,6 +21993,10 @@
 	color = "#FF8C00";
 	name = "orange towel"
 	},
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
+	},
 /turf/simulated/floor/tiled/freezer,
 /area/surface/outpost/main/dorms/dorm_1)
 "OP" = (
@@ -22662,7 +22704,6 @@
 	dir = 4
 	},
 /obj/machinery/alarm{
-	frequency = 1441;
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled,
@@ -23007,6 +23048,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/surface/outpost/main/corridor/right_lower)
+"QK" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/surface/outpost/wall)
 "QL" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
@@ -23254,7 +23301,6 @@
 	dir = 4
 	},
 /obj/machinery/alarm{
-	frequency = 1441;
 	pixel_y = 22
 	},
 /obj/effect/floor_decal/corner/blue/border{
@@ -23444,6 +23490,9 @@
 /obj/item/weapon/towel{
 	color = "#b5651d";
 	name = "brown towel"
+	},
+/obj/structure/sink{
+	pixel_y = 16
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/surface/outpost/main/dorms/dorm_4)
@@ -23658,6 +23707,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/surface/outpost/main/airlock/right_one)
+"RR" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/obj/machinery/light/flicker{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/surface/outpost/wall)
 "RS" = (
 /obj/structure/table/rack/shelf,
 /obj/item/weapon/storage/backpack/parachute{
@@ -24270,7 +24328,6 @@
 	dir = 8
 	},
 /obj/machinery/alarm{
-	frequency = 1441;
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/dark,
@@ -24510,6 +24567,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/corridor)
+"TK" = (
+/obj/structure/simple_door/sifwood,
+/turf/simulated/floor/outdoors/grass/sif/planetuse,
+/area/surface/outpost/wall)
 "TL" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
@@ -24593,8 +24654,8 @@
 /turf/simulated/floor/plating{
 	icon_state = "asteroidplating2";
 	nitrogen = 93.7835;
-	temperature = 243.15;
-	oxygen = 20.7263
+	oxygen = 20.7263;
+	temperature = 243.15
 	},
 /area/surface/outpost/mining_main/exterior)
 "TT" = (
@@ -25421,6 +25482,9 @@
 	},
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/corridor/right_upper)
+"Vw" = (
+/turf/simulated/wall/sifwood,
+/area/surface/outpost/wall)
 "Vy" = (
 /obj/structure/cable/cyan{
 	d1 = 1;
@@ -25635,7 +25699,6 @@
 /obj/random/junk,
 /obj/random/action_figure,
 /obj/machinery/alarm{
-	frequency = 1441;
 	pixel_y = 22
 	},
 /turf/simulated/floor/plating,
@@ -25811,7 +25874,6 @@
 	dir = 8
 	},
 /obj/machinery/alarm{
-	frequency = 1441;
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/freezer,
@@ -26709,6 +26771,11 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel_grid,
 /area/surface/outpost/main/janitor)
+"XT" = (
+/turf/simulated/floor/outdoors/grass/sif/planetuse{
+	tree_chance = 0
+	},
+/area/surface/outside/plains/normal)
 "XU" = (
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/corner/white/bordercorner,
@@ -26926,6 +26993,9 @@
 	color = "#800080";
 	name = "purple towel"
 	},
+/obj/structure/sink{
+	pixel_y = 16
+	},
 /turf/simulated/floor/tiled/freezer,
 /area/surface/outpost/main/dorms/dorm_2)
 "Ym" = (
@@ -27063,6 +27133,10 @@
 "Yw" = (
 /turf/simulated/floor/water,
 /area/surface/outside/plains/mountains)
+"Yx" = (
+/obj/machinery/cryopod/robot/door/gateway/quiet,
+/turf/simulated/floor/tiled/techfloor,
+/area/surface/outpost/wall)
 "Yy" = (
 /obj/effect/decal/remains/ribcage,
 /obj/effect/decal/cleanable/dirt,
@@ -27080,7 +27154,6 @@
 	dir = 8
 	},
 /obj/machinery/alarm{
-	frequency = 1441;
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/freezer,
@@ -27506,6 +27579,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/surface/outpost/main/laundry)
+"Zs" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/techfloor,
+/area/surface/outpost/wall)
 "Zt" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/white/border,
@@ -34329,7 +34409,7 @@ zw
 zw
 zw
 zw
-ff
+zw
 zw
 zw
 zw
@@ -35465,21 +35545,21 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
 yT
 yT
 yT
@@ -35723,21 +35803,21 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
 yT
 yT
 yT
@@ -35981,21 +36061,21 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
 yT
 yT
 yT
@@ -36239,21 +36319,21 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
 yT
 yT
 yT
@@ -36399,7 +36479,7 @@ zw
 zw
 zw
 zw
-zw
+ff
 zw
 zw
 zw
@@ -36497,21 +36577,21 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
 yT
 yT
 yT
@@ -36755,22 +36835,22 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
 yT
 yT
 yT
@@ -37013,21 +37093,21 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
 yT
 yT
 yT
@@ -37271,21 +37351,21 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+zp
+XT
+XT
+XT
+XT
+XT
 yT
 yT
 yT
@@ -37529,21 +37609,21 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
 yT
 yT
 yT
@@ -37787,21 +37867,21 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
 yT
 yT
 yT
@@ -38045,21 +38125,21 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
 yT
 yT
 yT
@@ -38303,21 +38383,21 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
 yT
 yT
 yT
@@ -38561,21 +38641,21 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
 Ey
 yT
 yT
@@ -38819,21 +38899,21 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
 Ey
 yT
 yT
@@ -39077,21 +39157,21 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
 Ey
 yT
 yT
@@ -39335,21 +39415,21 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
 Ey
 yT
 yT
@@ -67008,10 +67088,10 @@ yT
 yT
 yT
 yT
-Ey
-Ey
-Ey
-Ey
+XT
+XT
+XT
+XT
 yT
 yT
 yT
@@ -67265,11 +67345,11 @@ yT
 yT
 yT
 yT
-Ey
-Ey
-Ey
-Ey
-Ey
+XT
+XT
+XT
+XT
+XT
 yT
 yT
 yT
@@ -67307,11 +67387,11 @@ uE
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+Vw
+Vw
+Vw
+Vw
+Vw
 Ey
 Ey
 bv
@@ -67521,13 +67601,13 @@ yT
 yT
 yT
 yT
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+XT
+XT
+XT
+XT
+XT
+XT
+XT
 Ey
 yT
 yT
@@ -67565,11 +67645,11 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+Vw
+Eq
+CS
+QK
+Vw
 Ey
 Ey
 bv
@@ -67778,15 +67858,15 @@ yT
 yT
 yT
 yT
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
 yT
 yT
 yT
@@ -67823,11 +67903,11 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+Vw
+RR
+Yx
+mp
+Vw
 Ey
 Ey
 bv
@@ -68036,16 +68116,16 @@ yT
 yT
 yT
 yT
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
 yT
 yT
 yT
@@ -68081,11 +68161,11 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+Vw
+iP
+Zs
+zU
+Vw
 Ey
 bv
 bv
@@ -68295,15 +68375,15 @@ yT
 yT
 yT
 yT
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
 yT
 yT
 yT
@@ -68339,11 +68419,11 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+Vw
+Vw
+TK
+Vw
+Vw
 Ey
 Ey
 bv
@@ -68553,15 +68633,15 @@ yT
 yT
 yT
 yT
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
 yT
 yT
 yT
@@ -68599,7 +68679,7 @@ Ey
 Ey
 Ey
 Ey
-Ey
+yT
 Ey
 Ey
 Ey
@@ -68812,14 +68892,14 @@ yT
 yT
 yT
 yT
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
 yT
 yT
 yT
@@ -68857,8 +68937,8 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
+yT
+yT
 Ey
 Ey
 Ey
@@ -69070,14 +69150,14 @@ yT
 yT
 yT
 yT
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+XT
+XT
+XT
+XT
+XT
+XT
+XT
+XT
 yT
 yT
 yT
@@ -69115,7 +69195,7 @@ yT
 Ey
 Ey
 Ey
-Ey
+yT
 Ey
 Ey
 Ey
@@ -69330,12 +69410,12 @@ yT
 yT
 yT
 yT
-Ey
-Ey
-Ey
-Ey
-Ey
-Ey
+XT
+XT
+XT
+XT
+XT
+XT
 yT
 yT
 yT
@@ -69588,10 +69668,10 @@ yT
 yT
 yT
 yT
-Ey
+XT
 zC
-Ey
-Ey
+XT
+XT
 yT
 yT
 yT
@@ -70452,7 +70532,7 @@ uh
 BB
 xI
 nw
-ze
+nw
 Er
 AW
 ha

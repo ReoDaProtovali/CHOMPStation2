@@ -600,6 +600,13 @@
 					/obj/item/clothing/accessory/wcoat/swvest = 5,
 					/obj/item/clothing/accessory/wcoat/swvest/blue = 5,
 					/obj/item/clothing/accessory/wcoat/swvest/red = 5,
+					/obj/item/clothing/accessory/wristband = 5,
+					/obj/item/clothing/accessory/wristbandcollection = 5,
+					/obj/item/clothing/accessory/wristbandcollection/pink = 5,
+					/obj/item/clothing/accessory/wristbandcollection/les = 5,
+					/obj/item/clothing/accessory/wristbandcollection/bi = 5,
+					/obj/item/clothing/accessory/wristbandcollection/trans = 5,
+					/obj/item/clothing/accessory/wristbandcollection/ace = 5,
 					/obj/item/weapon/storage/wallet = 5,
 					/obj/item/weapon/storage/wallet/poly = 5,
 					/obj/item/weapon/storage/wallet/womens = 5,
@@ -729,6 +736,13 @@
 					/obj/item/clothing/accessory/wcoat/swvest = 50,
 					/obj/item/clothing/accessory/wcoat/swvest/blue = 50,
 					/obj/item/clothing/accessory/wcoat/swvest/red = 50,
+					/obj/item/clothing/accessory/wristband = 10,
+					/obj/item/clothing/accessory/wristbandcollection = 30,
+					/obj/item/clothing/accessory/wristbandcollection/pink = 30,
+					/obj/item/clothing/accessory/wristbandcollection/les = 30,
+					/obj/item/clothing/accessory/wristbandcollection/bi = 30,
+					/obj/item/clothing/accessory/wristbandcollection/trans = 30,
+					/obj/item/clothing/accessory/wristbandcollection/ace = 30,
 					/obj/item/weapon/storage/wallet = 50,
 					/obj/item/weapon/storage/wallet/poly = 50,
 					/obj/item/weapon/storage/wallet/womens = 50,
@@ -3624,6 +3638,7 @@
 					/obj/item/weapon/reagent_containers/food/snacks/ratpackcheese = 8,
 					/obj/item/weapon/reagent_containers/food/snacks/ratpackramen = 8,
 					/obj/item/weapon/reagent_containers/food/snacks/ratpacktaco = 8,
+					/obj/item/weapon/reagent_containers/food/snacks/ratpackcake = 8,
 					/obj/item/weapon/reagent_containers/food/snacks/ratpackturkey = 2)
 
 	prices = list(/obj/item/weapon/reagent_containers/food/snacks/ratprotein = 8,
@@ -3634,4 +3649,65 @@
 					/obj/item/weapon/reagent_containers/food/snacks/ratpackcheese = 10,
 					/obj/item/weapon/reagent_containers/food/snacks/ratpackramen = 10,
 					/obj/item/weapon/reagent_containers/food/snacks/ratpacktaco = 10,
+					/obj/item/weapon/reagent_containers/food/snacks/ratpackcake = 10,
 					/obj/item/weapon/reagent_containers/food/snacks/ratpackturkey = 200)
+
+/obj/machinery/vending/desatti
+	name = "Desatti Catering"
+	desc = "A vending machine from Desatti Catering, stocking traditional Sol snacks. Like the good ol' days, apparently."
+	icon = 'icons/obj/vending_vr.dmi'
+	icon_state = "desatti"
+	product_slogans = "Keep calm and eat Desatti!;Don't be a smeg head, tuck in!;Go'an. 'Ave a cheeky nosh.;TAKE A BUTCHERS AT THIS!"
+	product_ads = "Jaffa cakes are legally cakes!;Real synthetic processed pork!;What flavour could the shrimps really be!?;Tea recommended with every biscuit purchase!"
+	products = list(/obj/item/weapon/storage/box/jaffacake = 15,
+					/obj/item/weapon/storage/box/winegum = 15,
+					/obj/item/weapon/storage/box/saucer = 15,
+					/obj/item/weapon/storage/box/shrimpsandbananas = 15,
+					/obj/item/weapon/storage/box/rhubarbcustard = 10,
+					/obj/item/weapon/storage/box/custardcream = 10,
+					/obj/item/weapon/storage/box/bourbon = 10,
+					/obj/item/weapon/reagent_containers/food/snacks/packaged/sausageroll= 8,
+					/obj/item/weapon/reagent_containers/food/snacks/packaged/pasty = 8,
+					/obj/item/weapon/reagent_containers/food/snacks/packaged/scotchegg = 8,
+					/obj/item/weapon/reagent_containers/food/snacks/packaged/porkpie = 8)
+
+	prices = list(/obj/item/weapon/storage/box/jaffacake = 8,
+					/obj/item/weapon/storage/box/winegum = 8,
+					/obj/item/weapon/storage/box/saucer = 8,
+					/obj/item/weapon/storage/box/shrimpsandbananas = 8,
+					/obj/item/weapon/storage/box/rhubarbcustard = 8,
+					/obj/item/weapon/storage/box/custardcream = 8,
+					/obj/item/weapon/storage/box/bourbon = 8,
+					/obj/item/weapon/reagent_containers/food/snacks/packaged/sausageroll = 10,
+					/obj/item/weapon/reagent_containers/food/snacks/packaged/pasty = 10,
+					/obj/item/weapon/reagent_containers/food/snacks/packaged/scotchegg = 10,
+					/obj/item/weapon/reagent_containers/food/snacks/packaged/porkpie = 10
+					)
+
+/obj/machinery/vending/nukie
+	name = "Nukies Energy Drinks"
+	desc = "A vending machine stocked full of the most potent energy drinks on the market."
+	icon = 'icons/obj/vending_vr.dmi'
+	icon_state = "nukie"
+	product_slogans = "Contains one gram of caffeine!;Keep going, go on forever!;It'll blow you away!;Nukies is not responsible for any deaths occurred in a period of 24 hours after consuming our products!"
+	product_ads = "Get your peach blasted!;Pop your cherry here!;Dare you swallow the bursting banana?;Try our limited edition flavour!"
+	products = list(/obj/item/weapon/reagent_containers/food/drinks/cans/nukie_peach = 10,
+					/obj/item/weapon/reagent_containers/food/drinks/cans/nukie_pear = 10,
+					/obj/item/weapon/reagent_containers/food/drinks/cans/nukie_cherry = 10,
+					/obj/item/weapon/reagent_containers/food/drinks/cans/nukie_melon = 10,
+					/obj/item/weapon/reagent_containers/food/drinks/cans/nukie_banana = 10,
+					/obj/item/weapon/reagent_containers/food/drinks/cans/nukie_rose = 10,
+					/obj/item/weapon/reagent_containers/food/drinks/cans/nukie_lemon = 10,
+					/obj/item/weapon/reagent_containers/food/drinks/cans/nukie_fruit = 10,
+					/obj/item/weapon/reagent_containers/food/drinks/cans/nukie_special = 1)
+
+	prices = list(/obj/item/weapon/reagent_containers/food/drinks/cans/nukie_peach = 10,
+					/obj/item/weapon/reagent_containers/food/drinks/cans/nukie_pear = 10,
+					/obj/item/weapon/reagent_containers/food/drinks/cans/nukie_cherry = 10,
+					/obj/item/weapon/reagent_containers/food/drinks/cans/nukie_melon = 10,
+					/obj/item/weapon/reagent_containers/food/drinks/cans/nukie_banana = 10,
+					/obj/item/weapon/reagent_containers/food/drinks/cans/nukie_rose = 10,
+					/obj/item/weapon/reagent_containers/food/drinks/cans/nukie_lemon = 10,
+					/obj/item/weapon/reagent_containers/food/drinks/cans/nukie_fruit = 10,
+					/obj/item/weapon/reagent_containers/food/drinks/cans/nukie_special = 100
+					)

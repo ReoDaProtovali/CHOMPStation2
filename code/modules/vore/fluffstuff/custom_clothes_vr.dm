@@ -547,7 +547,7 @@
 
 	//Chica Head
 /obj/item/clothing/head/helmet/fluff/freddy/chica
-	desc = "<b><font color=red>LET'S EAT!</font></b>"
+	desc = span_red("<b>LET'S EAT!</b>")
 	icon_state = "chicahead"
 	item_state = "chicahead_mob"
 
@@ -586,7 +586,7 @@
 
 	//Chica Suit
 /obj/item/clothing/suit/fluff/freddy/chica
-	desc = "<b><font color=red>LET'S EAT!</font></b>"
+	desc = span_red("<b>LET'S EAT!</b>")
 	icon_state = "chicasuit"
 	item_state = "chicasuit_mob"
 
@@ -2099,14 +2099,14 @@ Departamental Swimsuits, for general use
 		translocator_unequip(translocator, user)
 		T.forceMove(src)
 		translocator = T
-		user.show_message("\icon[src][bicon(src)]*click!*")
+		user.show_message("[icon2html(src, user.client)]*click!*")
 		playsound(src, 'sound/machines/click.ogg', 30, 1)
 
 /obj/item/clothing/head/fluff/nikki/proc/translocator_unequip(var/obj/item/device/perfect_tele/T, var/mob/living/carbon/human/user)
 	if (translocator)
 		if (user)
 			user.put_in_hands(T)
-			user.show_message("\icon[src][bicon(src)]*click!*")
+			user.show_message("[icon2html(src, user.client)]*click!*")
 		else
 			translocator.forceMove(get_turf(src))
 		translocator = null
@@ -2683,4 +2683,14 @@ End CHOMP Removal*/
 /obj/item/clothing/suit/storage/toggle/labcoat/fluff/parrizjacket
 	name = "pink crop bomber"
 	desc = "A pink crop bomber jacket that is just barely able to zip up at the front. It has a small Virgo Orbital Research Establishment patch on each shoulder."
-	icon_state = "parriz_jacket" */ //Chomp REMOVE END
+	icon_state = "parriz_jacket" 
+
+//verysoft: Casey Brown
+/obj/item/clothing/glasses/big_round
+	name = "big round blue glasses"
+	desc = "A set of glasses! They are big, round, and very reflective, catching the light and obscuring the eyes!"
+	icon = 'icons/inventory/eyes/item_vr.dmi'
+	icon_override = 'icons/inventory/eyes/mob_vr.dmi'
+	icon_state = "bigroundglasses"
+	slot_flags = SLOT_EYES | SLOT_EARS
+	glasses_layer_above = TRUE */ //Chomp REMOVE END

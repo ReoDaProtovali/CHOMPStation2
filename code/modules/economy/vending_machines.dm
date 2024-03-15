@@ -490,7 +490,8 @@
 					/obj/item/device/flash = 5,
 					/obj/item/weapon/reagent_containers/food/snacks/donut/plain = 6,
 					/obj/item/weapon/reagent_containers/food/snacks/donut/plain/jelly = 6,
-					/obj/item/weapon/storage/box/evidence = 6)
+					/obj/item/weapon/storage/box/evidence = 6, // CHOMPEdit
+					/obj/item/clothing/accessory/bodycam = 10) // CHOMPEdit
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,
 					/obj/item/weapon/storage/box/donut = 2)
 	req_log_access = access_armory
@@ -994,6 +995,7 @@
 					/obj/item/weapon/reagent_containers/food/snacks/oort = 8,
 					/obj/item/weapon/reagent_containers/food/snacks/sun_snax = 8,
 					/obj/item/weapon/reagent_containers/food/snacks/canned/appleberry = 6,
+					/obj/item/weapon/storage/box/jaffacake = 8,
 					/obj/item/weapon/storage/box/gum = 8,
 					/obj/item/weapon/storage/box/admints = 8
 					)
@@ -1007,6 +1009,7 @@
 					/obj/item/weapon/reagent_containers/food/snacks/oort = 5,
 					/obj/item/weapon/reagent_containers/food/snacks/sun_snax = 5,
 					/obj/item/weapon/reagent_containers/food/snacks/canned/appleberry = 8,
+					/obj/item/weapon/storage/box/jaffacake = 5,
 					/obj/item/weapon/storage/box/gum = 2,
 					/obj/item/weapon/storage/box/admints = 2
 					)

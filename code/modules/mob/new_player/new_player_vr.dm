@@ -7,7 +7,7 @@
 		return TRUE
 
 	//No Flavor Text
-	if (config.require_flavor && !client?.prefs?.flavor_texts["general"] && !(J.mob_type & JOB_SILICON))
+	if (config.require_flavor && !(J.mob_type & JOB_SILICON) && (!client?.prefs?.flavor_texts["general"] || length(client.prefs.flavor_texts["general"]) < 30))
 		to_chat(src,"<span class='warning'>Please set your general flavor text to give a basic description of your character. Set it using the 'Set Flavor text' button on the 'General' tab in character setup, and choosing 'General' category.</span>")
 		pass = FALSE
 
@@ -30,6 +30,12 @@
 	if(!is_alien_whitelisted(src,GLOB.all_species[client?.prefs?.species]) && !check_rights(R_ADMIN, 0))
 		pass = FALSE
 		to_chat(src,"<span class='warning'>You are not allowed to spawn in as this species.</span>")
+
+	//CHOMPEdit Begin - Check species job bans... (Only used for shadekin)
+	if(J.is_species_banned(client?.prefs?.species, client?.prefs?.organ_data["brain"]))
+		pass = FALSE
+		to_chat(src,"<span class='warning'>Your species is not permitted to take this role or job.</span>")
+	//CHOMPEdit End
 
 	//Custom species checks
 	if (client?.prefs?.species == "Custom Species")

@@ -34,11 +34,20 @@ var/global/list/player_sizes_list = list(
 		"Tiny" 		= RESIZE_TINY)
 
 //stores vantag settings indexed by name
+//CHOMPEdit start - expanding the vore hud list
 var/global/list/vantag_choices_list = list(
 		VANTAG_NONE		=	"No Involvement",
-		VANTAG_VORE		=	"Be Prey",
+		VANTAG_VORE		=	"Be Prey (Any)",
+		VANTAG_VORE_YE	=	"Be Prey (Endo)",
+		VANTAG_VORE_YD	=	"Be Prey (Digestion)",
+		VANTAG_VORE_YA	=	"Be Prey (Absorption)",
+		VANTAG_VORE_D	=	"Be Pred (Any)",
+		VANTAG_VORE_DE	=	"Be Pred (Endo)",
+		VANTAG_VORE_DD	=	"Be Pred (Digestion)",
+		VANTAG_VORE_DA	=	"Be Pred (Absorption)",
 		VANTAG_KIDNAP	=	"Be Kidnapped",
 		VANTAG_KILL		=	"Be Killed")
+//CHOMPEdit end
 
 //Blacklist to exclude items from object ingestion. Digestion blacklist located in digest_act_vr.dm
 var/global/list/item_vore_blacklist = list(
@@ -51,6 +60,50 @@ var/global/list/item_vore_blacklist = list(
 		/obj/item/clothing/head/helmet/space,
 		/obj/item/weapon/disk/nuclear,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/roiz)
+
+//CHOMPEdit start - Global Whitelist mobs for takeover (mind binder/domination)
+var/global/list/mob_takeover_whitelist = list(
+		/mob/living/carbon,
+		/mob/living/silicon,
+		/mob/living/simple_mob/animal/sif,
+		/mob/living/simple_mob/animal/passive,
+		/mob/living/simple_mob/slime,
+		/mob/living/bot,
+		/mob/living/simple_mob/vore/horse,
+		/mob/living/simple_mob/vore/wolf,
+		/mob/living/simple_mob/animal/giant_spider,
+		/mob/living/simple_mob/vore/pakkun,
+		/mob/living/simple_mob/vore/otie,
+		/mob/living/simple_mob/vore/scel,
+		/mob/living/simple_mob/vore/aggressive/corrupthound,
+		/mob/living/simple_mob/vore/rabbit,
+		/mob/living/simple_mob/vore/redpanda,
+		/mob/living/simple_mob/vore/fennec,
+		/mob/living/simple_mob/vore/fennix,
+		/mob/living/simple_mob/vore/bee,
+		/mob/living/simple_mob/animal/space/bear,
+		/mob/living/simple_mob/vore/aggressive/dino,
+		/mob/living/simple_mob/vore/aggressive/lizardman,
+		/mob/living/simple_mob/vore/aggressive/frog,
+		/mob/living/simple_mob/vore/aggressive/rat,
+		/mob/living/simple_mob/vore/jelly,
+		/mob/living/simple_mob/animal/hyena,
+		/mob/living/simple_mob/vore/solargrub,
+		/mob/living/simple_mob/vore/sect_queen,
+		/mob/living/simple_mob/vore/sect_drone,
+		/mob/living/simple_mob/vore/xeno_defanged,
+		/mob/living/simple_mob/vore/aggressive/panther,
+		/mob/living/simple_mob/vore/aggressive/giant_snake,
+		/mob/living/simple_mob/vore/aggressive/deathclaw,
+		/mob/living/simple_mob/vore/weretiger,
+		/mob/living/simple_mob/vore/bigdragon/friendly/maintpred,
+		/mob/living/simple_mob/vore/alienanimals/catslug,
+		/mob/living/simple_mob/vore/alienanimals/teppi,
+		/mob/living/simple_mob/vore/squirrel/big,
+		/mob/living/simple_mob/vore/raptor,
+		/mob/living/simple_mob/vore/bat,
+		)
+//CHOMPEdit end
 
 //Classic Vore sounds
 var/global/list/classic_vore_sounds = list(
@@ -132,17 +185,17 @@ var/global/list/global_vore_egg_types = list(
 	"Xenomorph",
 	"Chocolate",
 	"Boney",
-	"Slime glob",
+	"Slime Glob",
 	"Chicken",
 	"Synthetic",
 	"Bluespace Floppy",
 	"Bluespace Compressed File",
 	"Bluespace CD",
-	"Escape pod",
-	"Cooking error",
-	"Web cocoon",
+	"Escape Pod",
+	"Cooking Error",
+	"Web Cocoon",
 	"Honeycomb",
-	"Bug cocoon",
+	"Bug Cocoon",
 	"Rock",
 	"Yellow",
 	"Blue",
@@ -151,7 +204,7 @@ var/global/list/global_vore_egg_types = list(
 	"Purple",
 	"Red",
 	"Rainbow",
-	"Spotted pink")
+	"Spotted Pink")
 
 var/global/list/tf_vore_egg_types = list(
 	"Unathi" 		= /obj/item/weapon/storage/vore_egg/unathi,
@@ -167,17 +220,17 @@ var/global/list/tf_vore_egg_types = list(
 	"Xenomorph"		= /obj/item/weapon/storage/vore_egg/xenomorph,
 	"Chocolate"		= /obj/item/weapon/storage/vore_egg/chocolate,
 	"Boney"			= /obj/item/weapon/storage/vore_egg/owlpellet,
-	"Slime glob"	= /obj/item/weapon/storage/vore_egg/slimeglob,
+	"Slime Glob"	= /obj/item/weapon/storage/vore_egg/slimeglob,
 	"Chicken"		= /obj/item/weapon/storage/vore_egg/chicken,
 	"Synthetic"		= /obj/item/weapon/storage/vore_egg/synthetic,
 	"Bluespace Floppy"	= /obj/item/weapon/storage/vore_egg/floppy,
 	"Bluespace Compressed File"	= /obj/item/weapon/storage/vore_egg/file,
 	"Bluespace CD"	= /obj/item/weapon/storage/vore_egg/cd,
-	"Escape pod"	= /obj/item/weapon/storage/vore_egg/escapepod,
-	"Cooking error"	= /obj/item/weapon/storage/vore_egg/badrecipe,
-	"Web cocoon"	= /obj/item/weapon/storage/vore_egg/cocoon,
+	"Escape Pod"	= /obj/item/weapon/storage/vore_egg/escapepod,
+	"Cooking Error"	= /obj/item/weapon/storage/vore_egg/badrecipe,
+	"Web Cocoon"	= /obj/item/weapon/storage/vore_egg/cocoon,
 	"Honeycomb"	= /obj/item/weapon/storage/vore_egg/honeycomb,
-	"Bug cocoon"	= /obj/item/weapon/storage/vore_egg/bugcocoon,
+	"Bug Cocoon"	= /obj/item/weapon/storage/vore_egg/bugcocoon,
 	"Rock"			= /obj/item/weapon/storage/vore_egg/rock,
 	"Yellow"		= /obj/item/weapon/storage/vore_egg/yellow,
 	"Blue"			= /obj/item/weapon/storage/vore_egg/blue,
@@ -186,7 +239,7 @@ var/global/list/tf_vore_egg_types = list(
 	"Purple"		= /obj/item/weapon/storage/vore_egg/purple,
 	"Red"			= /obj/item/weapon/storage/vore_egg/red,
 	"Rainbow"		= /obj/item/weapon/storage/vore_egg/rainbow,
-	"Spotted pink"	= /obj/item/weapon/storage/vore_egg/pinkspots)
+	"Spotted Pink"	= /obj/item/weapon/storage/vore_egg/pinkspots)
 
 var/global/list/edible_trash = list(/obj/item/broken_device,
 				/obj/item/clothing/accessory/collar,
@@ -691,9 +744,7 @@ var/global/list/xenobio_gold_mobs_hostile = list(
 										/mob/living/simple_mob/animal/giant_spider/webslinger,
 										/mob/living/simple_mob/animal/giant_spider/phorogenic,
 										/mob/living/simple_mob/animal/giant_spider/carrier,
-										/mob/living/simple_mob/animal/giant_spider/nurse,
 										/mob/living/simple_mob/animal/giant_spider/ion,
-										/mob/living/simple_mob/animal/giant_spider/nurse/queen,
 										/mob/living/simple_mob/animal/sif/diyaab,
 										/mob/living/simple_mob/animal/sif/duck,
 										/mob/living/simple_mob/animal/sif/frostfly,

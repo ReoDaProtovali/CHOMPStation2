@@ -1,6 +1,7 @@
 /mob/living/silicon/robot/syndicate
 	lawupdate = 0
 	scrambledcodes = 1
+	emagged = 1
 	icon_state = "securityrobot"
 	modtype = "Security"
 	lawchannel = "State"
@@ -8,9 +9,7 @@
 
 /mob/living/silicon/robot/syndicate/New()
 	if(!cell)
-		cell = new /obj/item/weapon/cell(src)
-		cell.maxcharge = 25000
-		cell.charge = 25000
+		cell = new /obj/item/weapon/cell/robot_syndi(src)
 
 	..()
 

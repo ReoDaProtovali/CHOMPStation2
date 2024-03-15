@@ -1,7 +1,3 @@
-/datum/sprite_accessory/marking
-	var/digitigrade_acceptance = MARKING_NONDIGI_ONLY
-	var/digitigrade_icon = 'icons/mob/human_races/markings_digi_ch.dmi'
-
 /datum/sprite_accessory/marking/ch
 	icon = 'icons/mob/human_races/markings_ch.dmi'
 
@@ -435,107 +431,6 @@
 	icon_state = "hair_vox_yasu"
 	species_allowed = list(SPECIES_VOX)
 
-//Digitigrade markings
-/datum/sprite_accessory/marking/digi
-	icon = 'icons/mob/human_races/markings_digi_ch.dmi'
-	digitigrade_acceptance = MARKING_DIGITIGRADE_ONLY
-
-/datum/sprite_accessory/marking/digi/fullleft
-	name = "Digitigrade Full Left Leg(Only works with digitigrade legs)"
-	icon_state = "full"
-	color_blend_mode = ICON_MULTIPLY
-	body_parts = list(BP_L_LEG,BP_L_FOOT)
-
-/datum/sprite_accessory/marking/digi/fullright
-	name = "Digitigrade Full Right Leg(Only works with digitigrade legs)"
-	icon_state = "full"
-	color_blend_mode = ICON_MULTIPLY
-	body_parts = list(BP_R_LEG,BP_R_FOOT)
-
-/datum/sprite_accessory/marking/digi/longsockleft
-	name = "Digitigrade Long Socks Left(Only works with digitigrade legs)"
-	icon_state = "longsock"
-	color_blend_mode = ICON_MULTIPLY
-	body_parts = list(BP_L_LEG,BP_L_FOOT)
-
-/datum/sprite_accessory/marking/digi/longsockright
-	name = "Digitigrade Long Socks Right(Only works with digitigrade legs)"
-	icon_state = "longsock"
-	color_blend_mode = ICON_MULTIPLY
-	body_parts = list(BP_R_LEG,BP_R_FOOT)
-
-/datum/sprite_accessory/marking/digi/medsockleft
-	name = "Digitigrade Medium Socks Left(Only works with digitigrade legs)"
-	icon_state = "medsock"
-	color_blend_mode = ICON_MULTIPLY
-	body_parts = list(BP_L_LEG,BP_L_FOOT)
-
-/datum/sprite_accessory/marking/digi/medsockright
-	name = "Digitigrade Medium Socks Right(Only works with digitigrade legs)"
-	icon_state = "medsock"
-	color_blend_mode = ICON_MULTIPLY
-	body_parts = list(BP_R_LEG,BP_R_FOOT)
-
-/datum/sprite_accessory/marking/digi/shortsockleft
-	name = "Digitigrade Short Socks Left(Only works with digitigrade legs)"
-	icon_state = "shortsock"
-	color_blend_mode = ICON_MULTIPLY
-	body_parts = list(BP_L_FOOT)
-
-/datum/sprite_accessory/marking/digi/shortsockright
-	name = "Digitigrade Short Socks Right(Only works with digitigrade legs)"
-	icon_state = "shortsock"
-	color_blend_mode = ICON_MULTIPLY
-	body_parts = list(BP_R_FOOT)
-
-/datum/sprite_accessory/marking/digi/toesleft
-	name = "Digitigrade Toes Left(Only works with digitigrade legs)"
-	icon_state = "toes"
-	color_blend_mode = ICON_MULTIPLY
-	body_parts = list(BP_L_FOOT)
-
-/datum/sprite_accessory/marking/digi/toesright
-	name = "Digitigrade Toes Right(Only works with digitigrade legs)"
-	icon_state = "toes"
-	color_blend_mode = ICON_MULTIPLY
-	body_parts = list(BP_R_FOOT)
-
-/datum/sprite_accessory/marking/digi/stripesleft
-	name = "Digitigrade Stripes Left(Only works with digitigrade legs)"
-	icon_state = "stripes"
-	color_blend_mode = ICON_MULTIPLY
-	body_parts = list(BP_L_LEG,BP_L_FOOT)
-
-/datum/sprite_accessory/marking/digi/stripesright
-	name = "Digitigrade Stripes Right(Only works with digitigrade legs)"
-	icon_state = "stripes"
-	color_blend_mode = ICON_MULTIPLY
-	body_parts = list(BP_R_LEG,BP_R_FOOT)
-
-/datum/sprite_accessory/marking/digi/smallspotsleft
-	name = "Digitigrade Small Spots Left(Only works with digitigrade legs)"
-	icon_state = "smallspots"
-	color_blend_mode = ICON_MULTIPLY
-	body_parts = list(BP_L_LEG,BP_L_FOOT)
-
-/datum/sprite_accessory/marking/digi/smallspotsright
-	name = "Digitigrade Small Spots Right(Only works with digitigrade legs)"
-	icon_state = "smallspots"
-	color_blend_mode = ICON_MULTIPLY
-	body_parts = list(BP_R_LEG,BP_R_FOOT)
-
-/datum/sprite_accessory/marking/digi/bigspotsleft
-	name = "Digitigrade Big Spots Left(Only works with digitigrade legs)"
-	icon_state = "bigspots"
-	color_blend_mode = ICON_MULTIPLY
-	body_parts = list(BP_L_LEG,BP_L_FOOT)
-
-/datum/sprite_accessory/marking/digi/bigspotsright
-	name = "Digitigrade Big Spots Right(Only works with digitigrade legs)"
-	icon_state = "bigspots"
-	color_blend_mode = ICON_MULTIPLY
-	body_parts = list(BP_R_LEG,BP_R_FOOT)
-
 /datum/sprite_accessory/marking/ch/teshari_large_eyes_het
 	name = "Teshari large eyes (Heterochromia)"
 	icon_state = "teshlarge_eyes_het"
@@ -610,6 +505,19 @@
 	color_blend_mode = ICON_MULTIPLY
 	body_parts = list(BP_HEAD)
 
+//Hellscout abdomen markings
+/datum/sprite_accessory/marking/digi/hellscout_abdomen
+	name = "Erebus - Hellscout FBP Abdomen (Digitigrade)"
+	icon_state = "hellscout_r"
+	color_blend_mode = ICON_MULTIPLY
+	body_parts = list(BP_L_LEG,BP_R_LEG,BP_GROIN,BP_TORSO)
+
+/datum/sprite_accessory/marking/ch/hellscout_abdomen_p
+	name = "Erebus - Hellscout FBP Abdomen (Plantigrade)"
+	icon_state = "hellscout_r"
+	color_blend_mode = ICON_MULTIPLY
+	body_parts = list(BP_GROIN,BP_TORSO)
+
 /datum/sprite_accessory/marking/ch/spectre_panels
 	name = "RACS Spectre FBP Panels"
 	icon_state = "spectre"
@@ -651,3 +559,51 @@
 	icon_state = "organs_ribs"
 	color_blend_mode = ICON_MULTIPLY
 	body_parts = list(BP_TORSO)
+
+/datum/sprite_accessory/marking/ch/chestfluff_big
+	name = "Chest Fluff, Big"
+	icon_state = "chestfluff_big"
+	color_blend_mode = ICON_MULTIPLY
+	body_parts = list(BP_TORSO)
+
+/datum/sprite_accessory/marking/ch/softbelly
+	name = "Belly Fur, Soft"
+	icon_state = "softbelly"
+	color_blend_mode = ICON_MULTIPLY
+	body_parts = list(BP_TORSO, BP_GROIN)
+
+/datum/sprite_accessory/marking/ch/softbelly_navel
+	name = "Belly Fur, Soft With Navel"
+	icon_state = "softbelly_navel"
+	color_blend_mode = ICON_MULTIPLY
+	body_parts = list(BP_TORSO, BP_GROIN)
+
+/datum/sprite_accessory/marking/ch/softbelly_fem
+	name = "Belly Fur, Soft (Female)"
+	icon_state = "softbelly_fem"
+	color_blend_mode = ICON_MULTIPLY
+	body_parts = list(BP_TORSO, BP_GROIN)
+
+/datum/sprite_accessory/marking/ch/softbelly_fem_navel
+	name = "Belly Fur, Soft With Navel (Female)"
+	icon_state = "softbelly_fem_navel"
+	color_blend_mode = ICON_MULTIPLY
+	body_parts = list(BP_TORSO, BP_GROIN)
+
+/datum/sprite_accessory/marking/ch/chitinbelly
+	name = "Chitinous Scutes"
+	icon_state = "chitin_belly"
+	color_blend_mode = ICON_MULTIPLY
+	body_parts = list(BP_TORSO, BP_GROIN)
+
+/datum/sprite_accessory/marking/ch/chitinbelly_fem
+	name = "Chitinous Scutes (Female)"
+	icon_state = "chitinbelly_fem"
+	color_blend_mode = ICON_MULTIPLY
+	body_parts = list(BP_TORSO, BP_GROIN)
+
+/datum/sprite_accessory/marking/ch/extraeyes
+	name = "Extra Eyes"
+	icon_state = "extra_eyes"
+	color_blend_mode = ICON_MULTIPLY
+	body_parts = list(BP_HEAD)

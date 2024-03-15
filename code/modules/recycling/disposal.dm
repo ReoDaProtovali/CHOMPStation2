@@ -5,9 +5,9 @@
 // Automatically recharges air (unless off), will flush when ready if pre-set
 // Can hold items and human size things, no other draggables
 // Toilets are a type of disposal bin for small objects only and work on magic. By magic, I mean torque rotation
-#define SEND_PRESSURE (700 + ONE_ATMOSPHERE) //kPa - assume the inside of a dispoal pipe is 1 atm, so that needs to be added.
+#define SEND_PRESSURE (0.05 + ONE_ATMOSPHERE) //kPa - assume the inside of a dispoal pipe is 1 atm, so that needs to be added.
 #define PRESSURE_TANK_VOLUME 150	//L
-#define PUMP_MAX_FLOW_RATE 90		//L/s - 4 m/s using a 15 cm by 15 cm inlet
+#define PUMP_MAX_FLOW_RATE 11.25	//L/s - 4 m/s using a 15 cm by 15 cm inlet //NOTE: I reduced the send pressure from 801 to 101.05 which is about 1/8 there was originally, and this was 90 before that. 90/8 is about 11.25, so that's the new value. -Reo
 
 /obj/machinery/disposal
 	name = "disposal unit"
@@ -100,7 +100,7 @@
 
 	if(istype(I, /obj/item/weapon/storage/bag/trash))
 		var/obj/item/weapon/storage/bag/trash/T = I
-		to_chat(user, "<font color='blue'>You empty the bag.</font>")
+		to_chat(user, span_blue("You empty the bag."))
 		for(var/obj/item/O in T.contents)
 			T.remove_from_storage(O,src)
 		T.update_icon()
@@ -129,7 +129,7 @@
 					GM.client.eye = src
 				GM.forceMove(src)
 				for (var/mob/C in viewers(src))
-					C.show_message("<font color='red'>[GM.name] has been placed in the [src] by [user].</font>", 3)
+					C.show_message(span_red("[GM.name] has been placed in the [src] by [user]."), 3)
 				qdel(G)
 
 				add_attack_logs(user,GM,"Disposals dunked")
@@ -233,7 +233,7 @@
 		return
 
 	if(user && user.loc == src)
-		to_chat(user, "<font color='red'>You cannot reach the controls from inside.</font>")
+		to_chat(user, span_red("You cannot reach the controls from inside."))
 		return
 
 	// Clumsy folks can only flush it.
@@ -646,7 +646,6 @@
 			src.destinationTag = T.sortTag
 		// CHOMPEdit End
 
-
 // start the movement process
 // argument is the disposal unit the holder started in
 /obj/structure/disposalholder/proc/start(var/obj/machinery/disposal/D)
@@ -756,7 +755,15 @@
 	return
 
 /obj/structure/disposalholder/Destroy()
-	qdel(gas)
+	QDEL_NULL(gas)
+	if(contents.len)
+		var/turf/qdelloc = get_turf(src)
+		if(qdelloc)
+			for(var/atom/movable/AM in contents)
+				AM.loc = qdelloc
+		else
+			log_and_message_admins("A disposal holder was deleted with contents in nullspace") //ideally, this should never happen
+
 	active = 0
 	return ..()
 
@@ -868,6 +875,10 @@
 /obj/structure/disposalpipe/proc/expel(var/obj/structure/disposalholder/H, var/turf/T, var/direction)
 	if(!istype(H))
 		return
+
+	if(!isturf(T)) // try very hard to ensure we have a valid turf target
+		var/turf/GT = get_turf(T)
+		T = (GT ? GT : get_turf(src))
 
 	// Empty the holder if it is expelled into a dense turf.
 	// Leaving it intact and sitting in a wall is stupid.
@@ -1281,7 +1292,7 @@
 		if(O.currTag)// Tag set
 			sort_tag = O.currTag
 			playsound(src, 'sound/machines/twobeep.ogg', 100, 1)
-			to_chat(user, "<font color='blue'>Changed tag to '[sort_tag]'.</font>")
+			to_chat(user, span_blue("Changed tag to '[sort_tag]'."))
 			updatename()
 			updatedesc()
 
@@ -1349,7 +1360,7 @@
 		if(O.currTag)// Tag set
 			sortType = O.currTag
 			playsound(src, 'sound/machines/twobeep.ogg', 100, 1)
-			to_chat(user, "<font color='blue'>Changed filter to '[sortType]'.</font>")
+			to_chat(user, span_blue("Changed filter to '[sortType]'."))
 			updatename()
 			updatedesc()
 
