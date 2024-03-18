@@ -1,6 +1,7 @@
 //Special type of frame that connects to disposal pipes
 /obj/machinery/disposal_machinery
 	name = "pneumatic machine"
+	desc = "Some sort of machine that seems to interface with disposal pipes."
 
 	var/linked //The trunk this is linked to. Might not be used.
 

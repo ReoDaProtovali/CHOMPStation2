@@ -5,7 +5,7 @@
  * -Reo
  */
 
-/obj/structure/disposal_machinery/inserter
+/obj/machinery/disposal_machinery/inserter
 	name = "pneumatic inserter"
 	desc = "a machine intended to assist with logistics by automatically sending whatever gets piped into it into whatever it's tube is stuck into"
 	icon = 'icons/obj/pipes/disposal.dmi'
@@ -14,6 +14,7 @@
 	var/attached = null		//What we're attached to
 	var/output_dest = null	//Where stuff goes
 	var/clogged = FALSE		//Glogged
+	var/launch_dist = 5		//How far do we fling stuff out if we're not attached to anything?
 
 	var/list/insertable = list(		//List of machines that this can insert into, due to each machine probably having a more complex
 		/obj/machinery/autolathe	//system of accessing what it uses than just looking in it's contents.
@@ -56,11 +57,11 @@
 		return
 
 /obj/machinery/disposal_machinery/inserter/eject(var/obj/structure/disposalholder/H)
-	. = ..()
+	var/target = get_ranged_target_turf(src, dir, 10)
 
 	if(clogged) //We wont send our contents anywhere if we're clogged
 		playsound(src, "sound/machines/warning-buzzer.ogg")
-		visible_message("\the [src] shudders for a moment as it tries to release something")
+		visible_message("<spawn class='warning'>\the [src] shudders for a moment as it tries to release something!</span>")
 		for(var/atom/movable/AM in H)
 			sleep(1)
 			playsound(src, "sound/effects/clang.ogg")
@@ -69,6 +70,7 @@
 	if(!attached) //If it's not attached to anything, it acts like a disposal outlet. But kinda sprays stuff around.
 		sleep(20)
 		//visible_message("<span class='warning'>The [src]'s tube flails wildly before ejecting a load of stuff!") //Maybe? Could get spammy.
+		var/splurbrpt = LAZYLEN(H.contents) //Hose goes plrrbt
 		for(var/atom/movable/AM in H)//
 			AM.forceMove(src.loc)
 			AM.pipe_eject(dir)

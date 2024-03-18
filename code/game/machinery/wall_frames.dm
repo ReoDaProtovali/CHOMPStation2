@@ -44,7 +44,15 @@
 	if(!(ndir in cardinal))
 		return
 
-	var/obj/machinery/M = new build_machine_type(get_turf(src.loc), ndir, 1, frame_type)
+	//ChompAdd: Oops framecode is fucking abhorrent so I have to made this snowflake horribleness.
+	//If someone figures out a better way to do this please tell me. -Reo
+	var/obj/machinery/M
+	if(frame_type == "Disposal Machinery")
+		M = new /obj/structure/disposal_frame(get_turf(src.loc))
+		M.dir = ndir
+	else
+		M = new build_machine_type(get_turf(src.loc), ndir, 1, frame_type)
+	//ChompAdd End.
 	M.fingerprints = fingerprints
 	M.fingerprintshidden = fingerprintshidden
 	M.fingerprintslast = fingerprintslast

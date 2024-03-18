@@ -1465,7 +1465,7 @@
 	if(O)
 		linked = O
 	//CHOMPEdit: Disposal machinery
-	var/obj/machinery/disposal_machine/M = locate() in loc
+	var/obj/machinery/disposal_machinery/M = locate() in loc
 	if(M)
 		linked = M
 	//CHOMPEdit end
@@ -1520,14 +1520,14 @@
 			if(H)
 				D.expel(H)	// expel at disposal
 		*/
-		if(istype(linked, obj/structure/disposaloutlet))
+		if(istype(linked, /obj/structure/disposaloutlet))
 			var/obj/structure/disposaloutlet/O = linked
 			O.expel(H)	// expel at outlet
-		else if(istype(linked, obj/machinery/disposal))
+		else if(istype(linked, /obj/machinery/disposal))
 			var/obj/machinery/disposal/D = linked
 			D.expel(H)	// expel at disposal
 		else
-			if(istype(linked, obj/machinery/disposal_machinery))
+			if(istype(linked, /obj/machinery/disposal_machinery))
 			var/obj/machinery/disposal/M = linked
 			M.expel(H)
 

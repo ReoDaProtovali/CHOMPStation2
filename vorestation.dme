@@ -4936,6 +4936,7 @@
 #include "modular_chomp\code\modules\reagents\reagents\modapply.dm"
 #include "modular_chomp\code\modules\reagents\reagents\toxin.dm"
 #include "modular_chomp\code\modules\recycling\disposal-construction.dm"
+#include "modular_chomp\code\modules\recycling\disposal-machinery.dm"
 #include "modular_chomp\code\modules\recycling\inserter.dm"
 #include "modular_chomp\code\modules\recycling\v_garbosystem.dm"
 #include "modular_chomp\code\modules\research\mechfab_designs.dm"
