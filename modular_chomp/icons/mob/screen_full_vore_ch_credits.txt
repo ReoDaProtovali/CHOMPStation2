@@ -56,3 +56,7 @@ VBO_maw14
 VBO_intestines9
 VBO_notbelly
 VBO_wriggly
+
+original art by [someone] (used with permission) with edits by hunter_53073 & ReoiteAvali
+VBO_maw15
+VBO_throat
